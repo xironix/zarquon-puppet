@@ -13,7 +13,7 @@ class iptables {
     # into thinking the service is *always* running (which in a way it is, as
     # iptables is part of the kernel.)
     hasstatus  => true,
-    status     => 'true',
+    status     => true,
 
     # Under Debian, the 'restart' parameter does not reload the rules, so tell
     # Puppet to fall back to stop/start, which does work.
@@ -28,13 +28,67 @@ class iptables {
   }
   firewall { '101 allow all on private net':
     proto   => 'all',
-    iniface => 'eth0',
+    iniface => 'eth1',
     action  => 'accept',
   }
 
   # Role specific rules
   case $::role {
-    'zarquon': { }
+    'zarquon': {
+      firewall { '200 snat for internal network':
+        chain    => 'POSTROUTING',
+        jump     => 'MASQUERADE',
+        proto    => 'all',
+        outiface => 'eth0',
+        source   => '192.168.1.0/24',
+        table    => 'nat',
+      }
+      firewall { '201 allow ftp':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '21',
+      }
+      firewall { '202 allow smtp':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '25',
+      }
+      firewall { '203 allow DNS':
+        action => accept,
+        proto  => 'udp',
+        sport  => 'domain',
+      }
+      firewall { '204 allow http':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '80',
+      }
+      firewall { '205 allow https':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '443',
+      }
+      firewall { '206 allow imaps':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '993',
+      }
+      firewall { '207 allow 1925 (alt smtp port)':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '1925',
+      }
+      firewall { '208 allow tcp bitTorrent traffic':
+        action => accept,
+        proto  => 'tcp',
+        dport  => '49152-65535',
+      }
+      firewall { '208 allow udp bitTorrent traffic':
+        action => accept,
+        proto  => 'udp',
+        dport  => '49152-65535',
+      }
+    }
     default: { }
   }
 }
