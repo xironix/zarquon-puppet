@@ -35,7 +35,6 @@ class iptables {
   # Role specific rules
   case $::role {
     'zarquon': { }
-    }
     default: { }
   }
 }
