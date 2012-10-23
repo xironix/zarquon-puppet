@@ -23,11 +23,3 @@ def deploy_puppet():
     all()
     execute(puppet.force)
 
-@task
-def site_hack():
-    """
-    This is a hack to get around a non-manageable site.pp, which
-    is required for puppetlabs/firewall to function properly.
-    """
-    upload_dir('manifests/', '/etc/puppet/manifests', use_sudo=True)
-
