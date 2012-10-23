@@ -34,31 +34,7 @@ class iptables {
 
   # Role specific rules
   case $::role {
-    'puppetmaster': { }
-    'db': { }
-    'app': {
-      firewall { '200 allow http':
-        proto  => 'tcp',
-        port   => '80',
-        action => 'accept',
-      }
-      firewall { '201 allow https':
-        proto  => 'tcp',
-        port   => '443',
-        action => 'accept',
-      }
-    }
-    'jenkins': {
-      firewall { '200 allow http':
-        proto  => 'tcp',
-        port   => '80',
-        action => 'accept',
-      }
-      firewall { '201 allow 8080':
-        proto  => 'tcp',
-        port   => '8080',
-        action => 'accept',
-      }
+    'zarquon': { }
     }
     default: { }
   }
