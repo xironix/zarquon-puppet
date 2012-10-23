@@ -1,6 +1,6 @@
 define users::user (
-  $fullname     = 'Nameless User',
-  $email        = 'nameless.user@poeti.ca',
+  $fullname     = 'Another Nameless Trollop',
+  $email        = 'nameless.user@trollop.org',
   $ensure       = present,
   $shell        = '/bin/bash',
   $has_sudo     = true,
