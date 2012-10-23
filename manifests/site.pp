@@ -25,4 +25,4 @@ resources { 'firewall':
   purge => true
 }
 
-include 'roles::$role'
+include "roles::$role"
