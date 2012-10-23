@@ -19,7 +19,8 @@ class roles::base {
   }
 
   users::user {
-    'root': fullname => 'Poeti.ca Administrator', email => 'root@poeti.ca';
+    'root':   fullname => 'Steffen L. Norgren', email => 'root@trollop.org';
+    'ironix': fullname => 'Steffen L. Norgren', email => 'ironix@trollop.org';
   }
 
   # SSH Keys
@@ -44,14 +45,11 @@ class roles::base {
     ensure => present
   }
 
-  # We will store some sensitive scripts here
-  file { '/usr/local/sbin': ensure => directory }
-
   # We're going to manage the sshd_config, as the default setup
   # allows password authentication.
   service { 'ssh':
     ensure  => 'running',
-    enable  => 'true',
+    enable  => true,
   }
 
   # add a notify to the file resource
