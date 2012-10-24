@@ -1,0 +1,18 @@
+options {
+  directory "/var/cache/bind";
+  statistics-file "/var/bind/named.stats";
+  dump-file "/var/bind/named.dump";
+  pid-file "/var/run/named/named.pid";
+
+  zone-statistics yes;
+  dnssec-lookaside auto;
+  dnssec-validation auto;
+
+  auth-nxdomain no;    # conform to RFC1035
+};
+
+// Distinguish between internal and external resolution
+acl internals {
+  127.0.0.0/8;
+  192.168.1.0/24;
+};

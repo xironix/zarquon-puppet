@@ -1,0 +1,50 @@
+class bind9_dns::nein_ca {
+  # Forward Zone
+  dns::zone { 'nein.ca':
+    serial      => '2012102404',
+    soa         => 'ns.nein.ca',
+    soa_email   => 'ironix.nein.ca',
+    nameservers => [ 'ns1', 'ns2', ],
+    zone_notify => 'yes',
+    also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+  }
+
+  # A Records
+  dns::record::a {
+    '@_nein':
+      host => '@',
+      zone => 'nein.ca',
+      ptr  => true,
+      data => '96.53.91.26';
+    'ns1_nein':
+      host => 'ns1',
+      zone => 'nein.ca',
+      ptr  => true,
+      data => '96.53.91.26';
+    'ns2_nein':
+      host => 'ns2',
+      zone => 'nein.ca',
+      ptr  => true,
+      data => '96.53.91.26';
+    'www_nein':
+      host => 'www',
+      zone => 'nein.ca',
+      ptr  => true,
+      data => '96.53.91.26';
+    'mail_nein':
+      host => 'mail',
+      zone => 'nein.ca',
+      ptr  => true,
+      data => '96.53.91.26';
+  }
+
+  # MX Records
+  dns::record::mx {
+    'mx,0_nein':
+      host       => 'mx,0',
+      zone       => 'nein.ca',
+      preference => 0,
+      data       => 'mail.nein.ca';
+  }
+}
+

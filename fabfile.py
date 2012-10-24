@@ -14,7 +14,7 @@ env.environment = os.environ.get('ENVIRONMENT', 'production')
 
 if env.environment == 'production':
     env.roledefs = {
-        'zarquon': ['zarquon.trollop.org'],
+        'zarquon': ['192.168.1.1'],
     }
 
 @task
