@@ -6,16 +6,9 @@ define users::user (
   $has_sudo     = true,
   $sudo_files   = undef,
   $ssh_key      = undef,
+  $ssh_key_name = undef,
+  $ssh_key_type = 'ssh-rsa',
 ) {
-  include git
-
-  if $ssh_key == undef {
-    $ssh_key_name = "${title}_key"
-  }
-  else {
-    $ssh_key_name = $ssh_key
-  }
-
   if $title == 'root' {
     $home_dir = ''
   }
@@ -29,6 +22,13 @@ define users::user (
     home       => "${home_dir}/${title}",
     managehome => true,
     shell      => $shell;
+  }
+  ssh_authorized_key { $ssh_key_name:
+    ensure  => $ensure,
+    key     => $ssh_key,
+    type    => $ssh_key_type,
+    user    => $title,
+    require => User[$title];
   }
 
   if (($has_sudo == true) and ($sudo_files == undef)) {
