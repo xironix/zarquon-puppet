@@ -53,12 +53,17 @@ class iptables {
         proto  => 'tcp',
         dport  => '25',
       }
-      firewall { '203 allow DNS':
+      firewall { '203 allow tco DNS':
+        action => accept,
+        proto  => 'tcp',
+        port  => 'domain',
+      }
+      firewall { '203a allow udp DNS':
         action => accept,
         proto  => 'udp',
-        sport  => 'domain',
+        port  => 'domain',
       }
-      firewall { '204 allow http':
+       firewall { '204 allow http':
         action => accept,
         proto  => 'tcp',
         dport  => '80',

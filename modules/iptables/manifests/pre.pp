@@ -7,7 +7,6 @@ class iptables::pre {
   firewall { '000 accept all icmp':
     proto  => 'icmp',
     action => 'accept',
-    icmp   => 'echo-reply',
   }
   firewall { '001 accept all to lo interface':
     proto   => 'all',
