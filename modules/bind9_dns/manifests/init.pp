@@ -11,12 +11,12 @@ class bind9_dns {
       serial      => '2012102401',
       soa         => 'ns.trollop.org',
       soa_email   => 'ironix.trollop.org',
-      nameservers => [ 'ns1', 'ns2', ];
+      nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ];
     '91.53.96.IN-ADDR.ARPA':
       serial      => '2012102402',
       soa         => 'ns.trollop.org',
       soa_email   => 'ironix.trollop.org',
-      nameservers => [ 'ns1', 'ns2', ];
+      nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ];
   }
 
   # This mess allows me to make use of views

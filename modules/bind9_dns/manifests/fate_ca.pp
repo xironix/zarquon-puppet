@@ -4,7 +4,7 @@ class bind9_dns::fate_ca {
     serial      => '2012102405',
     soa         => 'ns.fate.ca',
     soa_email   => 'ironix.fate.ca',
-    nameservers => [ 'ns1', 'ns2', ],
+    nameservers => [ 'ns1.fate.ca', 'ns2.fate.ca', ],
     zone_notify => 'yes',
     also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }

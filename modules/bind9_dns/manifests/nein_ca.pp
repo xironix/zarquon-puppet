@@ -4,7 +4,7 @@ class bind9_dns::nein_ca {
     serial      => '2012102404',
     soa         => 'ns.nein.ca',
     soa_email   => 'ironix.nein.ca',
-    nameservers => [ 'ns1', 'ns2', ],
+    nameservers => [ 'ns1.nein.ca', 'ns2.nein.ca', ],
     zone_notify => 'yes',
     also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }

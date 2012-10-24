@@ -4,7 +4,7 @@ class bind9_dns::trollop_org {
     serial      => '2012102403',
     soa         => 'ns.trollop.org',
     soa_email   => 'ironix.trollop.org',
-    nameservers => [ 'ns1', 'ns2', ],
+    nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
   }
 
   # A Records

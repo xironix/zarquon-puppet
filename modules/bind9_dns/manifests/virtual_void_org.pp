@@ -4,7 +4,7 @@ class bind9_dns::virtual_void_org {
     serial      => '2012102406',
     soa         => 'ns.virtual-void.org',
     soa_email   => 'ironix.virtual-void.org',
-    nameservers => [ 'ns1', 'ns2', ],
+    nameservers => [ 'ns1.virtual-void.org', 'ns2.virtual-void.org', ],
     zone_notify => 'yes',
     also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }
