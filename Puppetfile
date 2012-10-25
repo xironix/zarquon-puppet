@@ -9,20 +9,15 @@ mod "saz/vim", "2.0.1"
 
 mod "nginx",
   :git => "git://github.com/blaine/puppetlabs-nginx.git",
-  :ref => "9066ee82f24a5ca95459e288b8e3c5f343c7e170"
 
 mod "firewall",
   :git => "git://github.com/puppetlabs/puppetlabs-firewall.git",
-  :ref => "63fd4339faf10721020bf49439cd4462c725151a"
 
 mod "concat",
   :git => "git://github.com/ripienaar/puppet-concat.git",
-  :ref => "aaf2eeb02739513e83aa07c753f5b7180999fe8a"
 
 mod "dns",
   :git => "git://github.com/xironix/puppet-dns.git",
-  :ref => "15ba106b6e442519ef76082f247a4ca0bb194eed"
 
 mod "dhcp",
   :git => "git://github.com/ajjahn/puppet-dhcp.git",
-  :ref => "e0a8444de777f1f20843ab14e91a3a44583ab295"
