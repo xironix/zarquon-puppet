@@ -2,6 +2,7 @@ class dns_server::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
     serial      => '2012102405',
+    zone_ttl    => '3600',
     soa         => 'ns1.fate.ca',
     soa_email   => 'ironix.fate.ca',
     nameservers => [ 'ns1.fate.ca', 'ns2.fate.ca', ],

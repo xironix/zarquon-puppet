@@ -2,6 +2,7 @@ class dns_server::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
     serial      => '2012102404',
+    zone_ttl    => '3600',
     soa         => 'ns1.nein.ca',
     soa_email   => 'ironix.nein.ca',
     nameservers => [ 'ns1.nein.ca', 'ns2.nein.ca', ],

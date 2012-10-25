@@ -2,8 +2,6 @@
 
 # ISC-DHCP3-Server Global Configuration
 authoritative;
-server-identifier zarquon;
-server-name zarquon;
 
 # Client control
 deny duplicates;

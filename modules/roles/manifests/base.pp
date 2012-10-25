@@ -44,6 +44,7 @@ class roles::base {
     'tree',
     'whois',
     'screen',
+    'subversion',
     'openssh-server',
     'openssh-client',
   ]:

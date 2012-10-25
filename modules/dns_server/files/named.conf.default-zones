@@ -27,6 +27,11 @@ zone "255.in-addr.arpa" {
   file "/etc/bind/db.255";
 };
 
+zone "1.168.192.in-addr.arpa" IN {
+  type master;
+  file "/etc/bind/db.192.in-addr.arpa";
+};
+
 zone "trollop.org" {
   type master;
   file "/etc/bind/db.int.trollop.org";

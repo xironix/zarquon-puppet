@@ -42,6 +42,13 @@ class dns_server {
       source  => 'puppet:///modules/dns_server/named.conf.default-zones',
       notify  => Class['dns::server::service'],
       require => Class['dns::server'];
+    '/etc/bind/db.192.in-addr.arpa':
+      ensure  => present,
+      owner   => 'bind',
+      group   => 'bind',
+      source  => 'puppet:///modules/dns_server/db.192.in-addr.arpa',
+      notify  => Class['dns::server::service'],
+      require => Class['dns::server'];
     '/etc/bind/db.int.trollop.org':
       ensure  => present,
       owner   => 'bind',

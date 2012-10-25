@@ -26,11 +26,6 @@ class iptables {
     port   => '22',
     action => 'accept',
   }
-  firewall { '101 allow all on private net':
-    proto   => 'all',
-    iniface => 'eth1',
-    action  => 'accept',
-  }
 
   # Role specific rules
   case $::role {
@@ -43,52 +38,57 @@ class iptables {
         source   => '192.168.1.0/24',
         table    => 'nat',
       }
-      firewall { '201 allow ftp':
-        action => accept,
-        proto  => 'tcp',
-        dport  => '21',
+      firewall { '201 allow all on private net':
+        proto   => 'all',
+        iniface => 'eth1',
+        action  => 'accept',
       }
-      firewall { '202 allow smtp':
+      #firewall { '202 allow ftp':
+      #  action => accept,
+      #  proto  => 'tcp',
+      #  dport  => '21',
+      #}
+      firewall { '203 allow smtp':
         action => accept,
         proto  => 'tcp',
         dport  => '25',
       }
-      firewall { '203 allow tco DNS':
+      firewall { '204 allow tcp DNS':
         action => accept,
         proto  => 'tcp',
-        port  => 'domain',
+        port   => 'domain',
       }
-      firewall { '203a allow udp DNS':
+      firewall { '205 allow udp DNS':
         action => accept,
         proto  => 'udp',
-        port  => 'domain',
+        port   => 'domain',
       }
-       firewall { '204 allow http':
+      firewall { '206 allow http':
         action => accept,
         proto  => 'tcp',
         dport  => '80',
       }
-      firewall { '205 allow https':
+      firewall { '207 allow https':
         action => accept,
         proto  => 'tcp',
         dport  => '443',
       }
-      firewall { '206 allow imaps':
+      firewall { '208 allow imaps':
         action => accept,
         proto  => 'tcp',
         dport  => '993',
       }
-      firewall { '207 allow 1925 (alt smtp port)':
+      firewall { '209 allow 1925 (alt smtp port)':
         action => accept,
         proto  => 'tcp',
         dport  => '1925',
       }
-      firewall { '208 allow tcp bitTorrent traffic':
+      firewall { '210 allow tcp bitTorrent traffic':
         action => accept,
         proto  => 'tcp',
         dport  => '49152-65535',
       }
-      firewall { '208 allow udp bitTorrent traffic':
+      firewall { '211 allow udp bitTorrent traffic':
         action => accept,
         proto  => 'udp',
         dport  => '49152-65535',

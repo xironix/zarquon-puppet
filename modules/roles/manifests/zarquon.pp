@@ -2,6 +2,7 @@ class roles::zarquon {
   include roles::base
   include dns_server
   include dhcp
+  include nginx
 
   class { 'network::interfaces':
     interfaces => {
@@ -20,5 +21,75 @@ class roles::zarquon {
       }
     },
     auto       => [ 'eth0', 'eth1', ],
+  }
+
+  $fastcgi = {
+    'fastcgi_split_path_info' => '^(.+\.php)(/.+)$',
+    'fastcgi_pass'            => 'unix:/var/run/php5-fpm.sock',
+    'fastcgi_index'           => 'index.php',
+    'include'                 => 'fastcgi_params',
+  }
+
+  # fate.ca
+  nginx::resource::vhost { 'fate.ca':
+    ensure                 => present,
+    rewrite_www_to_non_www => 'true',
+    www_root               => '/var/www/fate.ca';
+  }
+
+  # virtual-void.org
+  nginx::resource::vhost { 'virtual-void.org':
+    ensure                 => present,
+    rewrite_www_to_non_www => 'true',
+    www_root               => '/var/www/virtual-void.org';
+  }
+
+  # phpmyadmin - sql.trollop.org
+  nginx::resource::vhost { 'sql.trollop.org':
+    ensure   => present,
+    ssl      => 'true',
+    ssl_cert => '/etc/ssl/private/trollop.org.crt',
+    ssl_key  => '/etc/ssl/private/trollop.org.key',
+    www_root => '/var/www/trollop.org/sql';
+  }
+  nginx::resource::location { 'sql.trollop.org':
+    ensure              => present,
+    ssl                 => 'true',
+    www_root            => '/var/www/trollop.org/sql',
+    location            => '~ \.php$',
+    vhost               => 'sql.trollop.org',
+    location_cfg_append => $fastcgi;
+  }
+
+  # WordPress - trollop.org
+  nginx::resource::vhost { 'trollop.org':
+    ensure                 => present,
+    rewrite_www_to_non_www => 'true',
+    listen_options        => 'default',
+    www_root               => '/var/www/trollop.org/blog';
+  }
+  nginx::resource::location { 'trollop.org':
+    ensure              => present,
+    www_root            => '/var/www/trollop.org/blog',
+    location            => '~ \.php$',
+    vhost               => 'trollop.org',
+    location_cfg_append => $fastcgi;
+  }
+
+  # postfix admin - postfix.trollop.org
+  nginx::resource::vhost { 'postfix.trollop.org':
+    ensure              => present,
+    ssl                 => 'true',
+    ssl_cert            => '/etc/ssl/private/trollop.org.crt',
+    ssl_key             => '/etc/ssl/private/trollop.org.key',
+    www_root            => '/var/www/trollop.org/postfix';
+  }
+  nginx::resource::location { 'postfix.trollop.org':
+    ensure              => present,
+    ssl                 => 'true',
+    www_root            => '/var/www/trollop.org/postfix',
+    location            => '~ \.php$',
+    vhost               => 'postfix.trollop.org',
+    location_cfg_append => $fastcgi;
   }
 }

@@ -2,6 +2,7 @@ class dns_server::trollop_org {
   # Forward Zone
   dns::zone { 'trollop.org':
     serial      => '2012102403',
+    zone_ttl    => '3600',
     soa         => 'ns1.trollop.org',
     soa_email   => 'ironix.trollop.org',
     nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
@@ -27,6 +28,14 @@ class dns_server::trollop_org {
       data => '96.53.91.26';
     'mail_trollop':
       host => 'mail',
+      zone => 'trollop.org',
+      data => '96.53.91.26';
+    'sql_trollop':
+      host => 'sql',
+      zone => 'trollop.org',
+      data => '96.53.91.26';
+    'postfix_trollop':
+      host => 'postfix',
       zone => 'trollop.org',
       data => '96.53.91.26';
     'torrents_trollop':
