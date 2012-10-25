@@ -1,0 +1,14 @@
+# This file is managed by puppet.
+
+# DHCP Pools
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  option domain-name "trollop.org";
+  option domain-name-servers 192.168.1.1;
+  option routers 192.168.1.1;
+  option broadcast-address 192.168.1.255;
+  allow unknown-clients;
+
+  pool {
+    range 192.168.1.150 192.168.1.199;
+  }
+}

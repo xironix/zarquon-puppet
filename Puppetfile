@@ -8,16 +8,13 @@ mod "maestrodev/wget", "0.0.1"
 mod "saz/vim", "2.0.1"
 
 mod "nginx",
-  :git => "git://github.com/blaine/puppetlabs-nginx.git",
+  :git => "git://github.com/blaine/puppetlabs-nginx.git"
 
 mod "firewall",
-  :git => "git://github.com/puppetlabs/puppetlabs-firewall.git",
+  :git => "git://github.com/puppetlabs/puppetlabs-firewall.git"
 
 mod "concat",
-  :git => "git://github.com/ripienaar/puppet-concat.git",
+  :git => "git://github.com/ripienaar/puppet-concat.git"
 
 mod "dns",
-  :git => "git://github.com/xironix/puppet-dns.git",
-
-mod "dhcp",
-  :git => "git://github.com/ajjahn/puppet-dhcp.git",
+  :git => "git://github.com/xironix/puppet-dns.git"

@@ -1,0 +1,23 @@
+# This file is managed by puppet.
+
+# ISC-DHCP3-Server Global Configuration
+authoritative;
+server-identifier zarquon;
+server-name zarquon;
+
+# Client control
+deny duplicates;
+deny client-updates;
+one-lease-per-client on;
+update-static-leases on;
+do-forward-updates on;
+update-conflict-detection on;
+
+# Lease authority
+default-lease-time 3600;
+min-lease-time 3600;
+max-lease-time 21600;
+
+# Service
+log-facility local7;
+

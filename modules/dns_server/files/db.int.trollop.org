@@ -16,8 +16,5 @@ zarniwoop         IN    A   192.168.1.110
 lintilla-cat      IN    A   192.168.1.111
 
 ; Virtual Machines
-majikthise        IN    A   192.168.1.120
-vroomfondel       IN    A   192.168.1.121
-trillian          IN    A   192.168.1.122
-krikkiter         IN    A   192.168.1.123
+krikkiter         IN    A   192.168.1.120
 
