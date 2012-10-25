@@ -18,3 +18,6 @@ mod "concat",
 
 mod "dns",
   :git => "git://github.com/xironix/puppet-dns.git"
+
+mod "network",
+  :git => "git://github.com/bvox/puppet-module-network.git"
