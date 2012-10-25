@@ -43,6 +43,8 @@ class roles::base {
     'less',
     'tree',
     'whois',
+    'openssh-server',
+    'openssh-client',
   ]:
     ensure => present
   }
@@ -52,12 +54,13 @@ class roles::base {
   service { 'ssh':
     ensure  => 'running',
     enable  => true,
+    require => Package['openssh-server'];
   }
 
   # add a notify to the file resource
   file { '/etc/ssh/sshd_config':
     notify  => Service['ssh'],
-    source  => 'puppet:///modules/roles/sshd_config',
+    source  => 'puppet:///modules/roles/ssh/sshd_config',
   }
 }
 
