@@ -1,4 +1,4 @@
-class zarquon::dns::fate_ca {
+class roles::zarquon::dns::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
     serial      => '2012102405',

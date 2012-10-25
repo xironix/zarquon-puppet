@@ -1,4 +1,4 @@
-class zarquon::dns {
+class roles::zarquon::dns {
   include dns::server
   include zarquon::dns::trollop_org
   include zarquon::dns::nein_ca

@@ -1,4 +1,4 @@
-class zarquon::dns::trollop_org {
+class roles::zarquon::dns::trollop_org {
   # Forward Zone
   dns::zone { 'trollop.org':
     serial      => '2012102403',

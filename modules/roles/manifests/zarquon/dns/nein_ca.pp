@@ -1,4 +1,4 @@
-class zarquon::dns::nein_ca {
+class roles::zarquon::dns::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
     serial      => '2012102404',

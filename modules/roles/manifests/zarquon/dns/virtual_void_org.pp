@@ -1,4 +1,4 @@
-class zarquon::dns::virtual_void_org {
+class roles::zarquon::dns::virtual_void_org {
   # Forward Zone
   dns::zone { 'virtual-void.org':
     serial      => '2012102406',
