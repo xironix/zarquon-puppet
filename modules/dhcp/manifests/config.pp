@@ -5,7 +5,7 @@ class dhcp::config {
   }
 
   file {
-    '/etc/defaults/isc-dhcp-server':
+    '/etc/default/isc-dhcp-server':
       ensure  => present,
       source  => 'puppet:///modules/dhcp/isc-dhcp-server',
       require => Class['dhcp::install'],
