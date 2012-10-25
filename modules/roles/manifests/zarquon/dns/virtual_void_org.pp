@@ -1,8 +1,8 @@
-class bind9_dns::virtual_void_org {
+class zarquon::dns::virtual_void_org {
   # Forward Zone
   dns::zone { 'virtual-void.org':
     serial      => '2012102406',
-    soa         => 'ns.virtual-void.org',
+    soa         => 'ns1.virtual-void.org',
     soa_email   => 'ironix.virtual-void.org',
     nameservers => [ 'ns1.virtual-void.org', 'ns2.virtual-void.org', ],
     zone_notify => 'yes',
@@ -14,27 +14,22 @@ class bind9_dns::virtual_void_org {
     '@_virtual-void':
       host => '@',
       zone => 'virtual-void.org',
-      ptr  => true,
       data => '96.53.91.26';
     'ns1_virtual-void':
       host => 'ns1',
       zone => 'virtual-void.org',
-      ptr  => true,
       data => '96.53.91.26';
     'ns2_virtual-void':
       host => 'ns2',
       zone => 'virtual-void.org',
-      ptr  => true,
       data => '96.53.91.26';
     'www_virtual-void':
       host => 'www',
       zone => 'virtual-void.org',
-      ptr  => true,
       data => '96.53.91.26';
     'mail_virtual-void':
       host => 'mail',
       zone => 'virtual-void.org',
-      ptr  => true,
       data => '96.53.91.26';
   }
 

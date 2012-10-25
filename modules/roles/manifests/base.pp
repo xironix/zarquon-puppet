@@ -42,6 +42,7 @@ class roles::base {
     'gettext',
     'less',
     'tree',
+    'whois',
   ]:
     ensure => present
   }

@@ -1,4 +1,4 @@
-$include "/etc/bind/zones/db.ext.trollop.org"
+$include "/etc/bind/db.trollop.org"
 
 ; Servers & Devices
 zarquon           IN    A   192.168.1.1

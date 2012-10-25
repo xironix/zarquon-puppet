@@ -1,8 +1,8 @@
-class bind9_dns::fate_ca {
+class zarquon::dns::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
     serial      => '2012102405',
-    soa         => 'ns.fate.ca',
+    soa         => 'ns1.fate.ca',
     soa_email   => 'ironix.fate.ca',
     nameservers => [ 'ns1.fate.ca', 'ns2.fate.ca', ],
     zone_notify => 'yes',
@@ -14,32 +14,26 @@ class bind9_dns::fate_ca {
     '@_fate':
       host => '@',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'ns1_fate':
       host => 'ns1',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'ns2_fate':
       host => 'ns2',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'www_fate':
       host => 'www',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'mail_fate':
       host => 'mail',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'ftp_fate':
       host => 'ftp',
       zone => 'fate.ca',
-      ptr  => true,
       data => '96.53.91.26';
   }
 

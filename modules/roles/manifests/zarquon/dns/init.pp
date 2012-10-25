@@ -1,23 +1,9 @@
-class bind9_dns {
+class zarquon::dns {
   include dns::server
-  include bind9_dns::trollop_org
-  include bind9_dns::nein_ca
-  include bind9_dns::fate_ca
-  include bind9_dns::virtual_void_org
-
-  # Reverse Zones
-  dns::zone {
-    '1.168.192.IN-ADDR.ARPA':
-      serial      => '2012102401',
-      soa         => 'ns.trollop.org',
-      soa_email   => 'ironix.trollop.org',
-      nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ];
-    '91.53.96.IN-ADDR.ARPA':
-      serial      => '2012102402',
-      soa         => 'ns.trollop.org',
-      soa_email   => 'ironix.trollop.org',
-      nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ];
-  }
+  include zarquon::dns::trollop_org
+  include zarquon::dns::nein_ca
+  include zarquon::dns::fate_ca
+  include zarquon::dns::virtual_void_org
 
   # This mess allows me to make use of views
   file {

@@ -1,8 +1,8 @@
-class bind9_dns::nein_ca {
+class zarquon::dns::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
     serial      => '2012102404',
-    soa         => 'ns.nein.ca',
+    soa         => 'ns1.nein.ca',
     soa_email   => 'ironix.nein.ca',
     nameservers => [ 'ns1.nein.ca', 'ns2.nein.ca', ],
     zone_notify => 'yes',
@@ -14,27 +14,22 @@ class bind9_dns::nein_ca {
     '@_nein':
       host => '@',
       zone => 'nein.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'ns1_nein':
       host => 'ns1',
       zone => 'nein.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'ns2_nein':
       host => 'ns2',
       zone => 'nein.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'www_nein':
       host => 'www',
       zone => 'nein.ca',
-      ptr  => true,
       data => '96.53.91.26';
     'mail_nein':
       host => 'mail',
       zone => 'nein.ca',
-      ptr  => true,
       data => '96.53.91.26';
   }
 

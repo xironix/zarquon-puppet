@@ -22,3 +22,7 @@ mod "concat",
 mod "dns",
   :git => "git://github.com/xironix/puppet-dns.git",
   :ref => "15ba106b6e442519ef76082f247a4ca0bb194eed"
+
+mod "dhcp",
+  :git => "git://github.com/ajjahn/puppet-dhcp.git",
+  :ref => "e0a8444de777f1f20843ab14e91a3a44583ab295"
