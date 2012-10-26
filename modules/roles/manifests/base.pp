@@ -57,7 +57,6 @@ class roles::base {
     'openssh-server',
     'openssh-client',
     'dstat',
-    'python-software-properties',
     'software-properties-common',
   ]:
     ensure => present;

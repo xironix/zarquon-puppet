@@ -7,9 +7,6 @@ class roles::zarquon {
   include nfs::server
   include wget
 
-  # Ubuntu 12.10 needs software-properties-common
-  class { 'nodejs': require => Class['roles::base'] }
-
   # Ensure puppet runs at boot
   service { [ 'puppet', 'puppetmaster' ]:
     ensure  => 'running',
@@ -142,26 +139,5 @@ class roles::zarquon {
     www_root            => '/var/www/trollop.org/postfix',
     vhost               => 'postfix.trollop.org',
     location_cfg_append => $fastcgi;
-  }
-
-  # graphite + statsd - stats.trollop.org
-  nginx::resource::upstream { 'stats':
-    ensure  => present,
-    members => '127.0.0.1:8080 fail_timeout=0',
-  }
-  nginx::resource::vhost { 'stats.trollop.org':
-    ensure      => present,
-    proxy       => 'http://stats',
-    server_opts => {
-      'client_max_body_size' => '64M',
-      'keepalive_timeout'    => '5',
-      'root'                 => '/opt/graphite/webapp/content',
-    };
-  }
-  nginx::resource::location { 'media':
-    ensure   => present,
-    location => '/media/',
-    vhost    => 'stats.trollop.org',
-    www_root => '/usr/local/lib/python2.7/dist-packages/django/contrib/admin';
   }
 }

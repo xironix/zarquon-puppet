@@ -46,8 +46,8 @@ class dns_server::trollop_org {
       host => 'torrents',
       zone => 'trollop.org',
       data => '96.53.91.26';
-    'stats_trollop':
-      host => 'stats',
+    'splunk_trollop':
+      host => 'splunk',
       zone => 'trollop.org',
       data => '96.53.91.26';
    }
