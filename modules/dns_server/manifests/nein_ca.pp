@@ -1,13 +1,17 @@
 class dns_server::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
-    serial      => '2012102404',
-    zone_ttl    => '3600',
-    soa         => 'ns1.nein.ca',
-    soa_email   => 'ironix.nein.ca',
-    nameservers => [ 'ns1.nein.ca', 'ns2.nein.ca', ],
-    zone_notify => 'yes',
-    also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    serial       => '2012102404',
+    zone_ttl     => '600',
+    zone_refresh => '10800',
+    zone_retry   => '3600',
+    zone_expire  => '604800',
+    zone_minimum => '300',
+    soa          => 'ns1.nein.ca',
+    soa_email    => 'ironix.nein.ca',
+    nameservers  => [ 'ns1.nein.ca', 'ns2.nein.ca', ],
+    zone_notify  => 'yes',
+    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }
 
   # A Records

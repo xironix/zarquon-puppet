@@ -1,11 +1,15 @@
 class dns_server::trollop_org {
   # Forward Zone
   dns::zone { 'trollop.org':
-    serial      => '2012102403',
-    zone_ttl    => '3600',
-    soa         => 'ns1.trollop.org',
-    soa_email   => 'ironix.trollop.org',
-    nameservers => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
+    serial       => '2012102403',
+    zone_ttl     => '600',
+    zone_refresh => '10800',
+    zone_retry   => '3600',
+    zone_expire  => '604800',
+    zone_minimum => '300',
+    soa          => 'ns1.trollop.org',
+    soa_email    => 'ironix.trollop.org',
+    nameservers  => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
   }
 
   # A Records

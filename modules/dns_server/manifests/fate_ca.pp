@@ -1,13 +1,17 @@
 class dns_server::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
-    serial      => '2012102405',
-    zone_ttl    => '3600',
-    soa         => 'ns1.fate.ca',
-    soa_email   => 'ironix.fate.ca',
-    nameservers => [ 'ns1.fate.ca', 'ns2.fate.ca', ],
-    zone_notify => 'yes',
-    also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    serial       => '2012102405',
+    zone_ttl     => '600',
+    zone_refresh => '10800',
+    zone_retry   => '3600',
+    zone_expire  => '604800',
+    zone_minimum => '300',
+    soa          => 'ns1.fate.ca',
+    soa_email    => 'ironix.fate.ca',
+    nameservers  => [ 'ns1.fate.ca', 'ns2.fate.ca', ],
+    zone_notify  => 'yes',
+    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }
 
   # A Records

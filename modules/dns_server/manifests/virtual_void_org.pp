@@ -1,13 +1,17 @@
 class dns_server::virtual_void_org {
   # Forward Zone
   dns::zone { 'virtual-void.org':
-    serial      => '2012102406',
-    zone_ttl    => '3600',
-    soa         => 'ns1.virtual-void.org',
-    soa_email   => 'ironix.virtual-void.org',
-    nameservers => [ 'ns1.virtual-void.org', 'ns2.virtual-void.org', ],
-    zone_notify => 'yes',
-    also_notify => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    serial       => '2012102406',
+    zone_ttl     => '600',
+    zone_refresh => '10800',
+    zone_retry   => '3600',
+    zone_expire  => '604800',
+    zone_minimum => '300',
+    soa          => 'ns1.virtual-void.org',
+    soa_email    => 'ironix.virtual-void.org',
+    nameservers  => [ 'ns1.virtual-void.org', 'ns2.virtual-void.org', ],
+    zone_notify  => 'yes',
+    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
   }
 
   # A Records
