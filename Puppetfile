@@ -37,4 +37,4 @@ mod "nfs",
   :git => "git://github.com/xironix/puppet-nfs.git"
 
 mod "nodejs",
-  git => "git://github.com/puppetlabs/puppetlabs-nodejs.git"
+  :git => "git://github.com/puppetlabs/puppetlabs-nodejs.git"
