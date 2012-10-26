@@ -6,7 +6,7 @@ class dns_server::nein_ca {
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
-    zone_minimum => '300',
+    zone_minimum => '3600',
     soa          => 'ns1.nein.ca',
     soa_email    => 'ironix.nein.ca',
     nameservers  => [ 'ns1.nein.ca', 'ns2.nein.ca', ],

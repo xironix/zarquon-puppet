@@ -6,7 +6,7 @@ class dns_server::fate_ca {
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
-    zone_minimum => '300',
+    zone_minimum => '3600',
     soa          => 'ns1.fate.ca',
     soa_email    => 'ironix.fate.ca',
     nameservers  => [ 'ns1.fate.ca', 'ns2.fate.ca', ],

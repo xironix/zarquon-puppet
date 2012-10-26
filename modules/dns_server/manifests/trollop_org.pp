@@ -6,7 +6,7 @@ class dns_server::trollop_org {
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
-    zone_minimum => '300',
+    zone_minimum => '3600',
     soa          => 'ns1.trollop.org',
     soa_email    => 'ironix.trollop.org',
     nameservers  => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
