@@ -5,6 +5,7 @@ class roles::zarquon {
   include nginx
   include nfs
   include nfs::server
+  include wget
 
   # Ensure puppet runs at boot
   service { [ 'puppet', 'puppetmaster' ]:
@@ -49,10 +50,6 @@ class roles::zarquon {
     'include'                 => 'fastcgi_params',
   }
 
-  # Nice perma-links with WordPress
-  $permalinks = {
-    'try_files'               => '$uri $uri/ /index.php?q=$uri&$args',
-  }
   # fate.ca
   nginx::resource::vhost { 'fate.ca':
     ensure                 => present,
@@ -67,6 +64,49 @@ class roles::zarquon {
     www_root               => '/var/www/virtual-void.org';
   }
 
+  # WordPress - trollop.org
+  nginx::resource::vhost { 'trollop.org':
+    ensure                 => present,
+    rewrite_www_to_non_www => 'true',
+    listen_options         => 'default',
+    www_root               => '/var/www/trollop.org/blog',
+    location_cfg_append    => {'try_files' => '$uri $uri/ /index.php?q=$uri&$args' };
+  }
+  nginx::resource::location { 'trollop.org':
+    ensure              => present,
+    location            => '~ \.php$',
+    www_root            => '/var/www/trollop.org/blog',
+    vhost               => 'trollop.org',
+    location_cfg_append => $fastcgi;
+  }
+
+  # rutorrent - torrents.trollop.org
+  nginx::resource::vhost { 'torrents.trollop.org':
+    ensure   => present,
+    www_root => '/var/www/trollop.org/torrents';
+  }
+  nginx::resource::location { 'RPC2':
+    ensure              => present,
+    location            => '/RPC2',
+    www_root            => '/var/www/trollop.org/torrents',
+    vhost               => 'torrents.trollop.org',
+    location_cfg_append => {
+      'include'   => 'scgi_params',
+      'scgi_pass' => 'localhost:5001',
+    };
+  }
+  nginx::resource::location { 'torrents.trollop.org':
+    ensure               => present,
+    location             => '~ \.php$',
+    www_root             => '/var/www/trollop.org/torrents',
+    vhost                => 'torrents.trollop.org',
+    location_cfg_append  => $fastcgi,
+    location_cfg_prepend => {
+      'auth_basic'           => '"Restricted"',
+      'auth_basic_user_file' => '/var/www/trollop.org/torrents.trollop.org.pass',
+    };
+  }
+
   # phpmyadmin - sql.trollop.org
   nginx::resource::vhost { 'sql.trollop.org':
     ensure   => present,
@@ -78,25 +118,9 @@ class roles::zarquon {
   nginx::resource::location { 'sql.trollop.org':
     ensure              => present,
     ssl                 => 'true',
+    location            => '~ \.php$',
     www_root            => '/var/www/trollop.org/sql',
-    location            => '~ \.php$',
     vhost               => 'sql.trollop.org',
-    location_cfg_append => $fastcgi;
-  }
-
-  # WordPress - trollop.org
-  nginx::resource::vhost { 'trollop.org':
-    ensure                 => present,
-    rewrite_www_to_non_www => 'true',
-    listen_options         => 'default',
-    www_root               => '/var/www/trollop.org/blog',
-    location_cfg_append    => $permalinks;
-  }
-  nginx::resource::location { 'trollop.org':
-    ensure              => present,
-    www_root            => '/var/www/trollop.org/blog',
-    location            => '~ \.php$',
-    vhost               => 'trollop.org',
     location_cfg_append => $fastcgi;
   }
 
@@ -111,8 +135,8 @@ class roles::zarquon {
   nginx::resource::location { 'postfix.trollop.org':
     ensure              => present,
     ssl                 => 'true',
-    www_root            => '/var/www/trollop.org/postfix',
     location            => '~ \.php$',
+    www_root            => '/var/www/trollop.org/postfix',
     vhost               => 'postfix.trollop.org',
     location_cfg_append => $fastcgi;
   }
