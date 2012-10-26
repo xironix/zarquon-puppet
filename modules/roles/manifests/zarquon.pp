@@ -37,6 +37,7 @@ class roles::zarquon {
       'zarniwoop'     => 'rw,async,no_root_squash,no_subtree_check',
       'zarniwoop-cat' => 'rw,async,no_root_squash,no_subtree_check',
     },
+    require           => Users::User['ironix'];
   }
 
   # fastcgi settings for nginx
