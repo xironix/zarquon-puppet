@@ -3,6 +3,14 @@ class roles::zarquon {
   include dns_server
   include dhcp
   include nginx
+  include nfs
+  include nfs::server
+
+  # Ensure puppet runs at boot
+  service { [ 'puppet', 'puppetmaster' ]:
+    ensure  => 'running',
+    enable  => true,
+  }
 
   class { 'network::interfaces':
     interfaces => {
@@ -23,6 +31,15 @@ class roles::zarquon {
     auto       => [ 'eth0', 'eth1', ],
   }
 
+  # NFS server for zarniwoop
+  nfs::export { '/home/ironix':
+    export            => {
+      'zarniwoop'     => 'rw,async,no_root_squash,no_subtree_check',
+      'zarniwoop-cat' => 'rw,async,no_root_squash,no_subtree_check',
+    },
+  }
+
+  # fastcgi settings for nginx
   $fastcgi = {
     'fastcgi_split_path_info' => '^(.+\.php)(/.+)$',
     'fastcgi_pass'            => 'unix:/var/run/php5-fpm.sock',
@@ -65,7 +82,7 @@ class roles::zarquon {
   nginx::resource::vhost { 'trollop.org':
     ensure                 => present,
     rewrite_www_to_non_www => 'true',
-    listen_options        => 'default',
+    listen_options         => 'default',
     www_root               => '/var/www/trollop.org/blog';
   }
   nginx::resource::location { 'trollop.org':
