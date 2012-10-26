@@ -7,7 +7,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias l='ls -C'
 
-# Colour grep aliases    
+# Colour grep aliases
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'

@@ -22,9 +22,9 @@ shopt -s checkwinsize
 
 # change the colour of the prompt if we are a root user
 if [ $(id -u) -eq 0 ]; then
-	PS1='\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;31m\]\h\[\033[1;37m\]:\[\033[0;34m\]\w \[\033[0;36m\]\$ \[\033[0m\]'
+  PS1='\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;31m\]\h\[\033[1;37m\]:\[\033[0;34m\]\w \[\033[0;36m\]\$ \[\033[0m\]'
 else
-	PS1='\[\033[1;32m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;34m\]\w \[\033[0;36m\]\$ \[\033[0m\]'
+  PS1='\[\033[1;32m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;34m\]\w \[\033[0;36m\]\$ \[\033[0m\]'
 fi
 
 # Use vim as the default editor
@@ -32,15 +32,15 @@ export EDITOR='/usr/bin/vim'
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 # Account holder definitions
 if [ -f ~/.bashrc.custom ] ; then
-	. ~/.bashrc.custom
+  . ~/.bashrc.custom
 fi
