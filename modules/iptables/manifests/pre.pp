@@ -17,16 +17,6 @@ class iptables::pre {
     state   => ['RELATED', 'ESTABLISHED'],
     action  => 'accept',
   }
-  firewall { '003 disregard netbios':
-    action => drop,
-    proto  => 'udp',
-    dport  => ['netbios-ns', 'netbios-dgm', 'netbios-ssn'],
-  }
-  firewall { '004 disregard CIFS':
-    action => drop,
-    dport  => 'microsoft-ds',
-    proto  => 'tcp'
-  }
   firewall { '099 INPUT drop invalid':
     action => drop,
     state  => 'INVALID',

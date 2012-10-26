@@ -12,6 +12,7 @@ class roles::zarquon {
     enable  => true,
   }
 
+  # Network interfaces
   class { 'network::interfaces':
     interfaces => {
       'eth0'   => {
