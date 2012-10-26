@@ -8,7 +8,7 @@ mod "maestrodev/wget", "0.0.1"
 mod "saz/vim", "2.0.1"
 
 mod "nginx",
-  :git => "git://github.com/jfryman/puppet-nginx.git"
+  :git => "git://github.com/xironix/puppet-nginx.git"
 
 mod "firewall",
   :git => "git://github.com/puppetlabs/puppetlabs-firewall.git"
