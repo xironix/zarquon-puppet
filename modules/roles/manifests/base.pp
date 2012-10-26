@@ -20,6 +20,12 @@ class roles::base {
 
   $ssh_key = 'AAAAB3NzaC1yc2EAAAADAQABAAACAQD43cF9h5l+VuJvL7Vz+tvqBORucca9S5w/RI0pPe7ie1Fv8eSMFfUHe2E89EgCuvRZgDT7v43bSyv5DBPA58wbc16iJzDhCo5FHb/Rbhbrbkgclgd8JjIbW9vb68eDSBLA7tO7nMb9/yyusvohbXHj0OJbtOR3YC1sKe6P7cS9h3Voq3b/ASpXIq1q5g1+IaAi8Grgaq+C3WXcaTZb7y5fUrfPGaoO05gZ9YjglWEVzcT3ljz2n/GurBd/RnFSaJOYqcdiQX1gVLSZ7noGFRIT3lt14A0fPfiEAmDme7JbYdjxVIOk+UH0o4h6Om0pM8a4a6EPn7QMxghYbuJD9ZaBcDi2oFAnyrnAGvqlPz3IBQIeTvRjQczhvg1qg2Sj0Q28BDZ+eOjVSBL81M731b4tMwdAfRL4FUo/3dtYrRdp9D/YZIQCupJYMmVVOgv2jHAba1z9H+cqvAtj5AqXO5lwzcu6i7C1URMu9LlE8X1nDE3ICPmiCeBMRR38uWfh/XK73qd9Vds9xfYh5ZkX6Z4Ele3x1glKjFEL51dnaeN2jdRegDYkQlJtg8/sMA/eMjv1GJiMVq0YpM//tR7rYZCyiSWD9kFmR9mDPkiRIHCQKMApdaWyBdpBVofZfTCw+mJrIHQtTk4n+hSZvobTvhIJK81VRDMdlLGirVWmOyLh9Q=='
 
+  # For NFS we want uid/gid mapping.
+  # gid for 'dialout' conflicts with OS X group 'staff'
+  group { 'dialout':
+    ensure => absent,
+  }
+
   users::user {
     'root':
       fullname     => 'Steffen L. Norgren',
@@ -30,7 +36,10 @@ class roles::base {
       fullname     => 'Steffen L. Norgren',
       email        => 'ironix@trollop.org',
       ssh_key      => $ssh_key,
-      ssh_key_name => 'ironix@trollop.org';
+      ssh_key_name => 'ironix@trollop.org',
+      uid          => '501',
+      gid          => '20',
+      require      => Group['dialout'];
   }
 
   # Default packages
@@ -47,6 +56,7 @@ class roles::base {
     'subversion',
     'openssh-server',
     'openssh-client',
+    'dstat',
   ]:
     ensure => present;
   }

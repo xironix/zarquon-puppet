@@ -8,6 +8,8 @@ define users::user (
   $ssh_key      = undef,
   $ssh_key_name = undef,
   $ssh_key_type = 'ssh-rsa',
+  $uid          = undef,
+  $gid          = undef,
 ) {
   if $title == 'root' {
     $home_dir = ''
@@ -16,12 +18,31 @@ define users::user (
     $home_dir = '/home'
   }
 
-  user { $title:
-    ensure     => $ensure,
-    comment    => "${fullname} <${email}>",
-    home       => "${home_dir}/${title}",
-    managehome => true,
-    shell      => $shell;
+  if ($uid) and ($gid) {
+    group { $title:
+      ensure  => present,
+      gid     => $gid;
+    }
+
+    user { $title:
+      ensure     => $ensure,
+      comment    => "${fullname} <${email}>",
+      home       => "${home_dir}/${title}",
+      managehome => true,
+      shell      => $shell,
+      uid        => $uid,
+      gid        => $gid,
+      require    => Group[$title],
+    }
+  }
+  else {
+    user { $title:
+      ensure     => $ensure,
+      comment    => "${fullname} <${email}>",
+      home       => "${home_dir}/${title}",
+      managehome => true,
+      shell      => $shell;
+    }
   }
   ssh_authorized_key { $ssh_key_name:
     ensure  => $ensure,
@@ -55,24 +76,28 @@ define users::user (
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
+      mode    => '0640',
       source  => 'puppet:///modules/users/bash/.profile',
       require => User[$title];
     "${home_dir}/${title}/.bashrc":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
+      mode    => '0640',
       source  => 'puppet:///modules/users/bash/.bashrc',
       require => User[$title];
     "${home_dir}/${title}/.bash_aliases":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
+      mode    => '0640',
       source  => 'puppet:///modules/users/bash/.bash_aliases',
       require => User[$title];
     "${home_dir}/${title}/.bash_logout":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
+      mode    => '0640',
       source  => 'puppet:///modules/users/bash/.bash_logout',
       require => User[$title];
   }
