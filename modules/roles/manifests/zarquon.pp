@@ -49,6 +49,10 @@ class roles::zarquon {
     'include'                 => 'fastcgi_params',
   }
 
+  # Nice perma-links with WordPress
+  $permalinks = {
+    'try_files'               => '$uri $uri/ /index.php?q=$uri&$args',
+  }
   # fate.ca
   nginx::resource::vhost { 'fate.ca':
     ensure                 => present,
@@ -85,7 +89,8 @@ class roles::zarquon {
     ensure                 => present,
     rewrite_www_to_non_www => 'true',
     listen_options         => 'default',
-    www_root               => '/var/www/trollop.org/blog';
+    www_root               => '/var/www/trollop.org/blog',
+    location_cfg_append    => $permalinks;
   }
   nginx::resource::location { 'trollop.org':
     ensure              => present,
