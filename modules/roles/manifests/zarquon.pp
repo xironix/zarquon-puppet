@@ -13,6 +13,20 @@ class roles::zarquon {
     enable  => true,
   }
 
+  # I likes me some bleeding edge
+  apt::source {
+    'ubuntu_proposed':
+      location          => 'http://archive.ubuntu.com/ubuntu/',
+      release           => 'quantal-proposed',
+      repos             => 'main restricted universe multiverse',
+      include_src       => true;
+    'ubuntu_backports':
+      location          => 'http://archive.ubuntu.com/ubuntu',
+      release           => 'quantal-backports',
+      repos             => 'main restricted universe multiverse',
+      include_src       => true;
+  }
+
   # Network interfaces
   class { 'network::interfaces':
     interfaces => {
