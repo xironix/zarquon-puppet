@@ -47,13 +47,12 @@ class roles::zarquon {
     auto       => [ 'eth0', 'eth1', ],
   }
 
-  # NFS server for zarniwoop
+  # NFS server
   nfs::export { '/home/ironix':
-    export            => {
-      'zarniwoop'     => 'rw,async,no_root_squash,no_subtree_check',
-      'zarniwoop-cat' => 'rw,async,no_root_squash,no_subtree_check',
+    export  => {
+      '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
     },
-    require           => Users::User['ironix'];
+    require => Users::User['ironix'];
   }
 
   # fastcgi settings for nginx
