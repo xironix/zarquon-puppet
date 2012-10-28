@@ -5,7 +5,7 @@ class roles::zaphod {
   include wget
 
   # Ensure puppet runs at boot
-  service { [ 'puppet':
+  service { 'puppet':
     ensure  => 'running',
     enable  => true,
   }
