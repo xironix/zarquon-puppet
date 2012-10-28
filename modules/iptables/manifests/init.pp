@@ -94,6 +94,13 @@ class iptables {
         dport  => '49152-65535',
       }
     }
+    'zaphod': {
+      firewall { '201 allow all on private net':
+        proto   => 'all',
+        iniface => 'eth0',
+        action  => 'accept',
+      }
+    }
     default: { }
   }
 }
