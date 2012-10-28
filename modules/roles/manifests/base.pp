@@ -62,6 +62,9 @@ class roles::base {
     ensure => present;
   }
 
+  # some stuff requires rake
+  package { 'rake': ensure => present, provider => 'gem' }
+
   # Stuff we don't want from a default install
   package { [
     'ppp',
