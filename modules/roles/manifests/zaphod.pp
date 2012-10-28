@@ -24,6 +24,20 @@ class roles::zaphod {
       include_src       => true;
   }
 
+  # VirtualBox
+  apt::source { 'virtualbox':
+    location    => 'http://download.virtualbox.org/virtualbox/debian',
+    release     => 'quantal',
+    repos       => 'contrib non-free',
+    include_src => false;
+  }
+  apt::key { 'virtualbox':
+    ensure     => present,
+    key        => '98AB5139',
+    key_source => 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc';
+  }
+  package { 'virtualbox': ensure => present, require => Apt::Source['virtualbox'] }
+
   # NFS server for zarniwoop
   nfs::export { '/home/ironix':
     export  => {
@@ -32,24 +46,31 @@ class roles::zaphod {
     require => Users::User['ironix'];
   }
 
-  # apt packages we want installed
-  package { [
-    'this-does-not-exist',
-  ]:
-    ensure => present;
-  }
-
   # gem packages we want installed
   package { [
     'vagrant',
   ]:
-    ensure => present,
+    ensure   => present,
     provider => 'gem';
   }
 
-  # Useless desktop install stuff
+  # stuff we want
   package { [
-    'something',
+    'flashplugin-installer',
+    'chromium-browser',
+    'synaptic',
+    'vim-gnome',
+  ]:
+    ensure => present;
+  }
+
+  # useless stuff
+  package { [
+    'firefox',
+    'thunderbird',
+    'libreoffice-core',
+    'ubuntuone-client',
+    'ubuntuone-couch',
   ]:
     ensure => absent;
   }
