@@ -65,20 +65,6 @@ class roles::base {
   # some stuff requires rake
   package { 'rake': ensure => present, provider => 'gem' }
 
-  # Stuff we don't want from a default install
-  package { [
-    'ppp',
-    'ed',
-    'nano',
-    'wireless-tools',
-    'wireless-regdb',
-    'wpasupplicant',
-    'dosfstools',
-    'ntfs-3g',
-  ]:
-    ensure => absent;
-  }
-
   # We're going to manage the sshd_config, as the default setup
   # allows password authentication.
   service { 'ssh':

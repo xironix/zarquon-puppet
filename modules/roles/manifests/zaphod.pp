@@ -32,6 +32,21 @@ class roles::zaphod {
     require => Users::User['ironix'];
   }
 
+  # apt packages we want installed
+  package { [
+    'this-does-not-exist',
+  ]:
+    ensure => present;
+  }
+
+  # gem packages we want installed
+  package { [
+    'vagrant',
+  ]:
+    ensure => present,
+    provider => 'gem';
+  }
+
   # Useless desktop install stuff
   package { [
     'something',
