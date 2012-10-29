@@ -7,10 +7,10 @@ class roles::zarquon {
   include nfs::server
   include wget
 
-  # Ensure puppet runs at boot
-  service { [ 'puppet', 'puppetmaster' ]:
-    ensure  => 'running',
-    enable  => true,
+  # Puppet will run manually
+  service { 'puppet':
+    ensure  => stopped,
+    enable  => false,
   }
 
   # I likes me some bleeding edge

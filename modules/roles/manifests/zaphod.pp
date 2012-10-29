@@ -4,10 +4,10 @@ class roles::zaphod {
   include nfs::server
   include wget
 
-  # Ensure puppet runs at boot
+  # Puppet will be run manually
   service { 'puppet':
-    ensure  => 'running',
-    enable  => true,
+    ensure  => stopped,
+    enable  => false;
   }
 
   # I likes me some bleeding edge
@@ -36,7 +36,13 @@ class roles::zaphod {
     key        => '98AB5139',
     key_source => 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc';
   }
-  package { 'virtualbox': ensure => present, require => Apt::Source['virtualbox'] }
+  package { [
+    'virtualbox-4.2',
+    'dkms',
+  ]:
+    ensure => present,
+    require => Apt::Source['virtualbox'];
+  }
 
   # NFS server for zarniwoop
   nfs::export { '/home/ironix':
@@ -49,14 +55,22 @@ class roles::zaphod {
   # gem packages we want installed
   package { [
     'vagrant',
+    'veewee',
   ]:
     ensure   => present,
-    provider => 'gem';
+    provider => 'gem',
+    require  => Package[ [
+      'zlib1g-dev',
+      'libxslt1-dev',
+      'libxml2-dev',
+      ] ];
   }
 
   # stuff we want
   package { [
-    'flashplugin-installer',
+    'zlib1g-dev',
+    'libxslt1-dev',
+    'libxml2-dev',
     'chromium-browser',
     'synaptic',
     'vim-gnome',
