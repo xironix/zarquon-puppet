@@ -55,22 +55,13 @@ class roles::zaphod {
   # gem packages we want installed
   package { [
     'vagrant',
-    'veewee',
   ]:
     ensure   => present,
-    provider => 'gem',
-    require  => Package[ [
-      'zlib1g-dev',
-      'libxslt1-dev',
-      'libxml2-dev',
-      ] ];
+    provider => 'gem';
   }
 
   # stuff we want
   package { [
-    'zlib1g-dev',
-    'libxslt1-dev',
-    'libxml2-dev',
     'chromium-browser',
     'synaptic',
     'vim-gnome',
