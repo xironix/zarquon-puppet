@@ -1,0 +1,19 @@
+# Ignore the puppet ssl certs (this is automatically generated)
+ssl/
+
+# We don't want to accidentally check in vim swap files
+*.swp
+
+# Vagrant stuff
+vagrant-editor/
+.vagrant
+
+# TextMate 2
+.tm_properties
+
+# Compiled python code
+*.pyc
+
+# Misc
+/.ssh
+/code/
