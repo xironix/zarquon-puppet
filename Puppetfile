@@ -37,7 +37,7 @@ mod "network",
   :git => "git://github.com/bvox/puppet-module-network.git"
 
 mod "nfs",
-  :git => "git://github.com/xironix/puppet-nfs.git"
+  :git => "git://github.com/stankevich/puppet-nfs.git"
 
 #mod "nodejs",
 #  :git => "git://github.com/puppetlabs/puppetlabs-nodejs.git"
