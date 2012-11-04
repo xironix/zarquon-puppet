@@ -74,6 +74,13 @@ class roles::zaphod {
     'firefox',
     'thunderbird',
     'libreoffice-core',
+    'libreoffice-common',
+    'deja-dup',
+    'gwibber-service',
+    'simple-scan',
+    'transmission-common',
+    'unity-webapps-common',
+    'brasero-common',
     'ubuntuone-client',
     'ubuntuone-couch',
   ]:
