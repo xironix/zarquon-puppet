@@ -8,6 +8,10 @@ import os
 # Change to same dir as fabfile
 os.chdir(os.path.dirname(__file__))
 
+# Uncomment to use specific versions of puppet/librarian-puppet
+#env.puppet_ver = '2.7.19'
+#env.librarian_ver = '0.9.6'
+
 env.user = 'root'
 env.puppetmaster_host = 'zarquon.trollop.org'
 env.environment = os.environ.get('ENVIRONMENT', 'production')
