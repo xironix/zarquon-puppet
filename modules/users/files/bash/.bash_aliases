@@ -13,4 +13,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # vim
-alias vi='vim -p'
+if [ "$DISPLAY" ]; then
+  alias vi='gvim -p'
+  EDITOR='gvim -f'
+else
+  alias vi='vim -p'
+  EDITOR='vim'
+fi
