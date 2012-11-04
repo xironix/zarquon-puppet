@@ -101,4 +101,13 @@ define users::user (
       source  => 'puppet:///modules/users/bash/.bash_logout',
       require => User[$title];
   }
+
+  # Standard .gemrc
+  file { "${home_dir}/${title}/.gemrc":
+    ensure  => present,
+    owner   => $title,
+    group   => $title,
+    mode    => '0640',
+    content => 'gem: --no-ri --no-rdoc';
+  }
 }
