@@ -57,6 +57,12 @@ class roles::zaphod {
   # Cinnamon Desktop PPA
   apt::ppa { 'ppa:gwendal-lebihan-dev/cinnamon-stable': }
 
+  # Configure lightdm
+  file { '/etc/lightdm/lightdm.conf':
+    ensure => present,
+    source => 'puppet:///modules/roles/lightdm/lightdm.conf';
+  }
+
   # stuff we want
   package { [
     'chromium-browser',
