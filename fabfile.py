@@ -8,9 +8,9 @@ import os
 # Change to same dir as fabfile
 os.chdir(os.path.dirname(__file__))
 
-# Uncomment to use specific versions of puppet/librarian-puppet
-#env.puppet_ver = '2.7.19'
-#env.librarian_ver = '0.9.6'
+env.loom_puppet_autosign = True
+#env.loom_puppet_version = '2.7.19'
+#env.loom_librarian_version = '0.9.6'
 
 env.user = 'root'
 env.puppetmaster_host = 'zarquon.trollop.org'
