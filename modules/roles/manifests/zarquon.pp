@@ -7,12 +7,6 @@ class roles::zarquon {
   include nfs::server
   include wget
 
-  # Puppet will run manually
-  service { 'puppet':
-    ensure  => stopped,
-    enable  => false,
-  }
-
   # I likes me some bleeding edge
   apt::source {
     'ubuntu_proposed':
