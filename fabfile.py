@@ -2,11 +2,10 @@ from fabric.api import *
 from fabric.contrib.files import exists
 from loom import puppet
 from loom.tasks import *
-from loom.utils import upload_dir
-import os
+from os import chdir, path, environ
 
 # Change to same dir as fabfile
-os.chdir(os.path.dirname(__file__))
+chdir(path.dirname(__file__))
 
 env.loom_puppet_autosign = True
 #env.loom_puppet_version = '2.7.19'
@@ -14,7 +13,7 @@ env.loom_puppet_autosign = True
 
 env.user = 'root'
 env.puppetmaster_host = 'zarquon.trollop.org'
-env.environment = os.environ.get('ENVIRONMENT', 'production')
+env.environment = environ.get('ENVIRONMENT', 'production')
 
 if env.environment == 'production':
     env.roledefs = {
