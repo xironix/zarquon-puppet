@@ -60,13 +60,19 @@ class roles::zaphod {
     provider => 'gem';
   }
 
+  # Cinnamon Desktop PPA
+  apt::ppa { 'ppa:gwendal-lebihan-dev/cinnamon-stable': }
+
   # stuff we want
   package { [
     'chromium-browser',
     'synaptic',
     'vim-gnome',
+    'ubuntu-desktop',
+    'cinnamon',
   ]:
-    ensure => present;
+    ensure  => present,
+    require => Apt::Ppa['ppa:gwendal-lebihan-dev/cinnamon-stable'];
   }
 
   # useless stuff
@@ -84,6 +90,7 @@ class roles::zaphod {
     'ubuntuone-client',
     'ubuntuone-couch',
   ]:
-    ensure => absent;
+    ensure  => absent,
+    require => Package['ubuntu-desktop'];
   }
 }
