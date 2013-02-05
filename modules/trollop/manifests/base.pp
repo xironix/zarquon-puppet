@@ -3,6 +3,7 @@ class trollop::base {
   include git
   include wget
   include ntp
+  include trollop::firewall
 
   class { 'vim': autoupgrade => true }
   class { 'sudo': autoupgrade => true }

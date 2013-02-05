@@ -24,6 +24,13 @@ class roles::zaphod {
       include_src       => true;
   }
 
+  # Firewall rules
+  firewall { '201 allow all on private net':
+    proto   => 'all',
+    iniface => 'eth0',
+    action  => 'accept',
+  }
+
   # VirtualBox
   apt::source { 'virtualbox':
     location    => 'http://download.virtualbox.org/virtualbox/debian',
