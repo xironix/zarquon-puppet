@@ -1,4 +1,4 @@
-class dns_server::trollop_org {
+class trollop::dns::trollop_org {
   # Forward Zone
   dns::zone { 'trollop.org':
     serial       => '2012102403',

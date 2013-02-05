@@ -1,5 +1,5 @@
 class roles::zaphod {
-  include roles::base
+  include trollop::base
   include nfs
   include nfs::server
   include wget
@@ -54,43 +54,18 @@ class roles::zaphod {
     provider => 'gem';
   }
 
-  # Cinnamon Desktop PPA
-  apt::ppa { 'ppa:gwendal-lebihan-dev/cinnamon-stable': }
-
-  # Configure lightdm
-  file { '/etc/lightdm/lightdm.conf':
-    ensure => present,
-    source => 'puppet:///modules/roles/lightdm/lightdm.conf';
-  }
-
   # stuff we want
   package { [
     'chromium-browser',
-    'synaptic',
     'vim-gnome',
-    'ubuntu-desktop',
-    'cinnamon',
   ]:
-    ensure  => present,
-    require => Apt::Ppa['ppa:gwendal-lebihan-dev/cinnamon-stable'];
+    ensure  => present;
   }
 
   # useless stuff
   package { [
     'firefox',
-    'thunderbird',
-    'libreoffice-core',
-    'libreoffice-common',
-    'deja-dup',
-    'gwibber-service',
-    'simple-scan',
-    'transmission-common',
-    'unity-webapps-common',
-    'brasero-common',
-    'ubuntuone-client',
-    'ubuntuone-couch',
   ]:
-    ensure  => absent,
-    require => Package['ubuntu-desktop'];
+    ensure  => absent;
   }
 }

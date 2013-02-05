@@ -1,4 +1,4 @@
-define users::user (
+define trollop::user (
   $fullname     = 'Another Nameless Trollop',
   $email        = 'nameless.user@trollop.org',
   $ensure       = present,
@@ -11,6 +11,9 @@ define users::user (
   $uid          = undef,
   $gid          = undef,
 ) {
+
+  class { 'sudo': autoupgrade => true }
+
   if $title == 'root' {
     $home_dir = ''
   }

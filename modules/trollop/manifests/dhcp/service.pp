@@ -1,4 +1,4 @@
-class dhcp::service {
+class trollop::dhcp::service {
   service { 'isc-dhcp-server':
     ensure     => running,
     hasstatus  => true,

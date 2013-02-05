@@ -1,11 +1,10 @@
-class roles::base {
+class trollop::base {
   include apt
   include git
   include wget
-  include users
+  include trollop::user
   include hosts
   include ntp
-  include iptables
 
   class { 'vim': autoupgrade => true }
 
@@ -26,7 +25,7 @@ class roles::base {
     ensure => absent,
   }
 
-  users::user {
+  trollop::user {
     'root':
       fullname     => 'Steffen L. Norgren',
       email        => 'root@trollop.org',

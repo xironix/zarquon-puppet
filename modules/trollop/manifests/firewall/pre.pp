@@ -1,4 +1,4 @@
-class iptables::pre {
+class trollop::firewall::pre {
   Firewall {
     require => undef,
   }

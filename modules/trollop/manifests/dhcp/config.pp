@@ -1,4 +1,4 @@
-class dhcp::config {
+class trollop::dhcp::config {
   file { '/etc/dhcp':
     ensure => directory,
     mode   => '0755',

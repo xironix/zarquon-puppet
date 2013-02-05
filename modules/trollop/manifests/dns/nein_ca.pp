@@ -1,4 +1,4 @@
-class dns_server::nein_ca {
+class trollop::dns::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
     serial       => '2012102404',

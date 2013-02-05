@@ -1,4 +1,4 @@
-class dns_server::fate_ca {
+class trollop::dns::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
     serial       => '2012102405',
