@@ -12,8 +12,6 @@ define trollop::user (
   $gid          = undef,
 ) {
 
-  class { 'sudo': autoupgrade => true }
-
   if $title == 'root' {
     $home_dir = ''
   }
@@ -80,28 +78,28 @@ define trollop::user (
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/users/bash/.profile',
+      source  => 'puppet:///modules/trollop/bash/.profile',
       require => User[$title];
     "${home_dir}/${title}/.bashrc":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/users/bash/.bashrc',
+      source  => 'puppet:///modules/trollop/bash/.bashrc',
       require => User[$title];
     "${home_dir}/${title}/.bash_aliases":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/users/bash/.bash_aliases',
+      source  => 'puppet:///modules/trollop/bash/.bash_aliases',
       require => User[$title];
     "${home_dir}/${title}/.bash_logout":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/users/bash/.bash_logout',
+      source  => 'puppet:///modules/trollop/bash/.bash_logout',
       require => User[$title];
   }
 

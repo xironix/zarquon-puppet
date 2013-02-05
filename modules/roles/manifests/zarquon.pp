@@ -1,11 +1,17 @@
 class roles::zarquon {
-  include roles::base
-  include dns_server
-  include dhcp
+  include trollop::base
+  include trollop::dns
+  include trollop::dhcp
   include nginx
   include nfs
   include nfs::server
   include wget
+
+  host { 'zarquon':
+    ensure       => present,
+    name         => 'zarquon.trollop.org',
+    host_aliases => [ 'zarquon.trollop.org', 'trollop.org', 'zarquon', ],
+  }
 
   # I likes me some bleeding edge
   apt::source {
@@ -46,7 +52,7 @@ class roles::zarquon {
     export  => {
       '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
     },
-    require => Users::User['ironix'];
+    require => Trollop::User['ironix'];
   }
 
   # fastcgi settings for nginx

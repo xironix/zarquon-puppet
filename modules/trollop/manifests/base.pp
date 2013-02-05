@@ -2,11 +2,10 @@ class trollop::base {
   include apt
   include git
   include wget
-  include trollop::user
-  include hosts
   include ntp
 
   class { 'vim': autoupgrade => true }
+  class { 'sudo': autoupgrade => true }
 
   Exec { path => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin' }
 

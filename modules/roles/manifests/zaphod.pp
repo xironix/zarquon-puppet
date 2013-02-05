@@ -4,6 +4,12 @@ class roles::zaphod {
   include nfs::server
   include wget
 
+  host { 'zaphod':
+    ensure       => present,
+    name         => 'zaphod.trollop.org',
+    host_aliases => [ 'zaphod.trollop.org', 'trollop.org', 'zaphod', ],
+  }
+
   # I likes me some bleeding edge
   apt::source {
     'ubuntu_proposed':
