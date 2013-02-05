@@ -15,8 +15,8 @@ If the Loom version changes in `requirements.txt`, run this command again to upd
 
 ## Dependencies
 
-* Tested with Puppet Open Source 3.0.1
-* Targeted for Ubuntu 12.10
+* Tested with Puppet Open Source 3.1.0
+* Tested on Ubuntu 12.10 and Linux Mint 14
 
 ## Linting
 

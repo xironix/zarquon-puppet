@@ -6,22 +6,9 @@ class roles::zaphod {
 
   host { 'zaphod':
     ensure       => present,
+    ip           => '127.0.0.1',
     name         => 'zaphod.trollop.org',
     host_aliases => [ 'zaphod.trollop.org', 'trollop.org', 'zaphod', ],
-  }
-
-  # I likes me some bleeding edge
-  apt::source {
-    'ubuntu_proposed':
-      location          => 'http://archive.ubuntu.com/ubuntu/',
-      release           => 'quantal-proposed',
-      repos             => 'main restricted universe multiverse',
-      include_src       => true;
-    'ubuntu_backports':
-      location          => 'http://archive.ubuntu.com/ubuntu',
-      release           => 'quantal-backports',
-      repos             => 'main restricted universe multiverse',
-      include_src       => true;
   }
 
   # Firewall rules
@@ -56,7 +43,7 @@ class roles::zaphod {
     export  => {
       '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
     },
-    require => Users::User['ironix'];
+    require => Class['trollop::base'];
   }
 
   # gem packages we want installed
@@ -78,6 +65,7 @@ class roles::zaphod {
   # useless stuff
   package { [
     'firefox',
+    'libreoffice-common',
   ]:
     ensure  => absent;
   }

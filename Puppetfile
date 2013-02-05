@@ -1,13 +1,13 @@
 forge "http://forge.puppetlabs.com"
 
-mod "puppetlabs/stdlib"
-mod "puppetlabs/apt"
+#mod "puppetlabs/stdlib"
+#mod "puppetlabs/apt"
 
-#mod "stdlib",
-#  :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+mod "stdlib",
+  :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
 
-#mod "apt",
-#  :git => "git://github.com/puppetlabs/puppetlabs-apt.git"
+mod "apt",
+  :git => "git://github.com/puppetlabs/puppetlabs-apt.git"
 
 mod "sudo",
   :git => "git://github.com/saz/puppet-sudo.git"
@@ -37,7 +37,4 @@ mod "network",
   :git => "git://github.com/bvox/puppet-module-network.git"
 
 mod "nfs",
-  :git => "git://github.com/stankevich/puppet-nfs.git"
-
-#mod "nodejs",
-#  :git => "git://github.com/puppetlabs/puppetlabs-nodejs.git"
+  :git => "git://github.com/xironix/puppet-nfs.git"

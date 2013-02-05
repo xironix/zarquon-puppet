@@ -9,6 +9,7 @@ class roles::zarquon {
 
   host { 'zarquon':
     ensure       => present,
+    ip           => '127.0.0.1',
     name         => 'zarquon.trollop.org',
     host_aliases => [ 'zarquon.trollop.org', 'trollop.org', 'zarquon', ],
   }
@@ -117,7 +118,7 @@ class roles::zarquon {
     export  => {
       '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
     },
-    require => Trollop::User['ironix'];
+    require => Class['trollop::base'];
   }
 
   # fastcgi settings for nginx
