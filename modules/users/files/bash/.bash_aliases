@@ -7,6 +7,9 @@ alias ll='ls -l'
 alias la='ls -la'
 alias l='ls -C'
 
+# ssh
+alias ssh='ssh -A'
+
 # Colour grep aliases
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
