@@ -10,7 +10,6 @@ group {
     hardware ethernet 90:84:0d:d4:b0:da;
     fixed-address 192.168.1.2;
   }
-
   host crisis-inducer {
     option host-name "crisis-inducer";
     hardware ethernet 00:21:5a:e4:ee:dd;
@@ -23,19 +22,16 @@ group {
     hardware ethernet 00:23:df:98:da:10;
     fixed-address 192.168.1.100;
   }
-
   host lintilla {
     option host-name "lintilla";
     hardware ethernet 3c:07:54:09:48:76;
     fixed-address 192.168.1.101;
   }
-
   host zaphod {
     option host-name "zaphod";
     hardware ethernet 00:23:54:7c:3d:79;
     fixed-address 192.168.1.102;
   }
-
   host agrajag {
     option host-name "agrajag";
     hardware ethernet 00:16:76:8f:64:e5;
@@ -48,7 +44,6 @@ group {
     hardware ethernet 00:23:6c:98:9d:8d;
     fixed-address 192.168.1.110;
   }
-
   host lintilla-cat {
     option host-name "lintilla-cat";
     hardware ethernet e4:ce:8f:63:35:26;
@@ -61,11 +56,9 @@ group {
     hardware ethernet 00:0c:29:d5:19:b6;
     fixed-address 192.168.1.120;
   }
-
-  # Virtual Machines
   host majikthise {
     option host-name "majikthise";
     hardware ethernet 00:aa:bb:cc:dd:00;
-    fixed-address 192.168.1.120;
+    fixed-address 192.168.1.121;
   }
 }
