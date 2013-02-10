@@ -5,8 +5,8 @@ class trollop::base {
   include ntp
   include trollop::firewall
 
-  class { 'vim': autoupgrade => true }
-  class { 'sudo': autoupgrade => true }
+  class { 'vim': autoupgrade  => true }
+  class { 'sudo': autoupgrade => true, source => 'puppet:///modules/trollop/sudo/sudoers.deb'}
 
   Exec { path => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin' }
 
