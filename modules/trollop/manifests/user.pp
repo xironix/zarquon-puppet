@@ -109,6 +109,6 @@ define trollop::user (
     owner   => $title,
     group   => $title,
     mode    => '0640',
-    content => 'gem: --no-ri --no-rdoc';
+    content => "gem: --no-ri --no-rdoc\n";
   }
 }
