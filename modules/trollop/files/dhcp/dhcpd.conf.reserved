@@ -63,7 +63,7 @@ group {
   }
 
   # Virtual Machines
-  host krikkiter {
+  host majikthise {
     option host-name "majikthise";
     hardware ethernet 00:aa:bb:cc:dd:00;
     fixed-address 192.168.1.120;
