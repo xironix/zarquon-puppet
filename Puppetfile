@@ -35,6 +35,3 @@ mod "dns",
 
 mod "network",
   :git => "git://github.com/bvox/puppet-module-network.git"
-
-mod "nfs",
-  :git => "git://github.com/xironix/puppet-nfs.git"

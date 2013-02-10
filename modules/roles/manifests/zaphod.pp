@@ -1,7 +1,5 @@
 class roles::zaphod {
   include trollop::base
-  include nfs
-  include nfs::server
   include wget
 
   host { 'zaphod':
@@ -36,14 +34,6 @@ class roles::zaphod {
   ]:
     ensure => present,
     require => Apt::Source['virtualbox'];
-  }
-
-  # NFS server for zarniwoop
-  nfs::export { '/home/ironix':
-    export  => {
-      '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
-    },
-    require => Class['trollop::base'];
   }
 
   # gem packages we want installed

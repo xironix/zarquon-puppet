@@ -3,8 +3,6 @@ class roles::zarquon {
   include trollop::dns
   include trollop::dhcp
   include nginx
-  include nfs
-  include nfs::server
   include wget
 
   host { 'zarquon':
@@ -111,14 +109,6 @@ class roles::zarquon {
     action => accept,
     proto  => 'udp',
     dport  => '49152-65535',
-  }
-
-  # NFS server
-  nfs::export { '/home/ironix':
-    export  => {
-      '192.168.1.0/24' => 'rw,async,no_root_squash,no_subtree_check',
-    },
-    require => Class['trollop::base'];
   }
 
   # fastcgi settings for nginx
