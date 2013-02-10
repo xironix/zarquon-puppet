@@ -22,7 +22,7 @@ class roles::zaphod {
   apt::source { 'virtualbox':
     location    => 'http://download.virtualbox.org/virtualbox/debian',
     release     => 'quantal',
-    repos       => 'contrib non-free',
+    repos       => 'contrib',
     include_src => false;
   }
   apt::key { 'virtualbox':
