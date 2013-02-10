@@ -17,4 +17,4 @@ lintilla-cat      IN    A   192.168.1.111
 
 ; Virtual Machines
 krikkiter         IN    A   192.168.1.120
-
+majikthise        IN    A   192.168.1.121

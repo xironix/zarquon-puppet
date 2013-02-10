@@ -61,4 +61,11 @@ group {
     hardware ethernet 00:0c:29:d5:19:b6;
     fixed-address 192.168.1.120;
   }
+
+  # Virtual Machines
+  host krikkiter {
+    option host-name "majikthise";
+    hardware ethernet 00:0c:29:d5:19:00;
+    fixed-address 192.168.1.120;
+  }
 }
