@@ -13,7 +13,7 @@ class roles::zarquon {
       fullname     => 'Steffen L. Norgren',
       email        => 'root@trollop.org',
       ssh_key      => $zarniwoop_key,
-      ssh_key_name => 'ironix@zarniwoop.trollop.org';
+      ssh_key_name => 'root@zarniwoop.trollop.org';
     'ironix':
       fullname     => 'Steffen L. Norgren',
       email        => 'ironix@trollop.org',
