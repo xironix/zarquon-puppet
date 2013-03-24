@@ -46,10 +46,10 @@ class trollop::dns::trollop_org {
       host => 'torrents',
       zone => 'trollop.org',
       data => '96.53.91.26';
-    'splunk_trollop':
-      host => 'splunk',
+    'mumble_trollop':
+      host => 'mumble',
       zone => 'trollop.org',
-      data => '96.53.91.26';
+      data => '54.225.135.56';
    }
 
   # MX Records
