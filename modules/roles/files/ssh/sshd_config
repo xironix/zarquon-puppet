@@ -24,7 +24,7 @@ LogLevel INFO
 
 # Authentication:
 LoginGraceTime 120
-PermitRootLogin no
+PermitRootLogin yes
 StrictModes yes
 
 RSAAuthentication yes
@@ -89,6 +89,4 @@ UsePAM no
 UseDNS no
 
 # Extra Security
-ClientAliveInterval 300
-ClientAliveCountMax 0
 AllowUsers ironix root

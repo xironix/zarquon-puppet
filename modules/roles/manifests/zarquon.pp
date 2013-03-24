@@ -35,7 +35,7 @@ class roles::zarquon {
     'ironix@zaphod.trollop.org':
       ensure => present,
       name => 'ironix@zaphod.trollop.org',
-      user => 'root',
+      user => 'ironix',
       type => 'ssh-rsa',
       key =>  $zaphod_key;
   }
