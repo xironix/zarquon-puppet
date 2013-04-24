@@ -1,9 +1,10 @@
 class trollop::dns {
   include dns::server
   include trollop::dns::trollop_org
-  include trollop::dns::nein_ca
-  include trollop::dns::fate_ca
-  include trollop::dns::virtual_void_org
+  #include trollop::dns::nein_ca
+  #include trollop::dns::fate_ca
+  #include trollop::dns::virtual_void_org
+  #include trollop::dns::zarniwoop_ca
 
   # This mess allows me to make use of views
   file {

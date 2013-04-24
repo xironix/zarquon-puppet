@@ -12,6 +12,7 @@ env.loom_puppet_autosign = True
 #env.loom_librarian_version = '0.9.6'
 
 env.user = 'root'
+env.port = 7442
 env.puppetmaster_host = 'zarquon.trollop.org'
 env.environment = environ.get('ENVIRONMENT', 'production')
 

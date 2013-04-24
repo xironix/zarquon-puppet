@@ -1,17 +1,15 @@
 class trollop::dns::nein_ca {
   # Forward Zone
   dns::zone { 'nein.ca':
-    serial       => '2012102404',
+    serial       => '2013041603',
     zone_ttl     => '600',
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
     zone_minimum => '3600',
-    soa          => 'ns1.nein.ca',
-    soa_email    => 'ironix.nein.ca',
-    nameservers  => [ 'ns1.nein.ca', 'ns2.nein.ca', ],
-    zone_notify  => 'yes',
-    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    soa          => 'schadenfreude.nein.ca',
+    soa_email    => 'steffen.nein.ca',
+    nameservers  => [ 'schadenfreude.nein.ca', 'verboten.nein.ca', ],
   }
 
   # A Records
@@ -21,11 +19,11 @@ class trollop::dns::nein_ca {
       zone => 'nein.ca',
       data => '96.53.91.26';
     'ns1_nein':
-      host => 'ns1',
+      host => 'schadenfreude',
       zone => 'nein.ca',
       data => '96.53.91.26';
     'ns2_nein':
-      host => 'ns2',
+      host => 'verboten',
       zone => 'nein.ca',
       data => '96.53.91.26';
     'www_nein':
@@ -36,6 +34,12 @@ class trollop::dns::nein_ca {
       host => 'mail',
       zone => 'nein.ca',
       data => '96.53.91.26';
+  }
+
+ dns::record::txt { 'spf_nein':
+    host => '@',
+    zone => 'nein.ca',
+    data => 'v=spf1 mx a a:trollop.org a:fate.ca a:virtual-void.org include:shaw.ca include:google.com ~all';
   }
 
   # MX Records

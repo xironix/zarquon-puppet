@@ -1,17 +1,15 @@
 class trollop::dns::fate_ca {
   # Forward Zone
   dns::zone { 'fate.ca':
-    serial       => '2012102405',
+    serial       => '2013041602',
     zone_ttl     => '600',
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
     zone_minimum => '3600',
-    soa          => 'ns1.fate.ca',
-    soa_email    => 'ironix.fate.ca',
-    nameservers  => [ 'ns1.fate.ca', 'ns2.fate.ca', ],
-    zone_notify  => 'yes',
-    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    soa          => 'inevitable.fate.ca',
+    soa_email    => 'steffen.fate.ca',
+    nameservers  => [ 'inevitable.fate.ca', 'existential.fate.ca', ],
   }
 
   # A Records
@@ -21,11 +19,11 @@ class trollop::dns::fate_ca {
       zone => 'fate.ca',
       data => '96.53.91.26';
     'ns1_fate':
-      host => 'ns1',
+      host => 'inevitable',
       zone => 'fate.ca',
       data => '96.53.91.26';
     'ns2_fate':
-      host => 'ns2',
+      host => 'existential',
       zone => 'fate.ca',
       data => '96.53.91.26';
     'www_fate':
@@ -40,6 +38,12 @@ class trollop::dns::fate_ca {
       host => 'ftp',
       zone => 'fate.ca',
       data => '96.53.91.26';
+  }
+
+ dns::record::txt { 'spf_fate':
+    host => '@',
+    zone => 'fate.ca',
+    data => 'v=spf1 mx a a:trollop.org a:nein.ca a:virtual-void.org include:shaw.ca include:google.com ~all';
   }
 
   # MX Records

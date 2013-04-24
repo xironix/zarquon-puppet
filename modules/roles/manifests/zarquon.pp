@@ -170,25 +170,31 @@ class roles::zarquon {
 
   # WordPress - trollop.org
   nginx::resource::vhost { 'trollop.org':
-    ensure                 => present,
-    rewrite_www_to_non_www => 'true',
-    listen_options         => 'default',
-    www_root               => '/var/www/trollop.org/blog',
-    location_cfg_append    => {'try_files' => '$uri $uri/ /index.php?q=$uri&$args' };
+    ensure                  => present,
+    ssl                     => 'true',
+    ssl_cert                => '/etc/ssl/private/trollop.org.crt',
+    ssl_key                 => '/etc/ssl/private/trollop.org.key',
+    rewrite_www_to_non_www  => 'true',
+    listen_options          => 'default',
+    www_root                => '/var/www/trollop.org/blog',
+    location_cfg_append     => {
+      'try_files' => '$uri $uri/ /index.php?q=$uri&$args',
+    };
   }
   nginx::resource::location { 'trollop.org':
     ensure              => present,
+    ssl                 => 'true',
     location            => '~ \.php$',
     www_root            => '/var/www/trollop.org/blog',
     vhost               => 'trollop.org',
-    location_cfg_append => $fastcgi;
+    location_cfg_append => $fastcgi,
   }
 
   # rutorrent - torrents.trollop.org
   nginx::resource::vhost { 'torrents.trollop.org':
-    ensure   => present,
-    www_root => '/var/www/trollop.org/torrents',
-    location_cfg_prepend => {
+    ensure                   => present,
+    www_root                 => '/var/www/trollop.org/torrents',
+    location_cfg_prepend     => {
       'auth_basic'           => '"Restricted"',
       'auth_basic_user_file' => '/var/www/trollop.org/torrents/torrents.trollop.org.pass',
     };

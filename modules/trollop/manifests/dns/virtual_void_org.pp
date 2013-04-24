@@ -1,17 +1,15 @@
 class trollop::dns::virtual_void_org {
   # Forward Zone
   dns::zone { 'virtual-void.org':
-    serial       => '2012102406',
+    serial       => '2013041605',
     zone_ttl     => '600',
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
     zone_minimum => '3600',
-    soa          => 'ns1.virtual-void.org',
-    soa_email    => 'ironix.virtual-void.org',
-    nameservers  => [ 'ns1.virtual-void.org', 'ns2.virtual-void.org', ],
-    zone_notify  => 'yes',
-    also_notify  => [ '65.39.140.92', '64.85.60.137', '64.34.130.218', ];
+    soa          => 'solipsistic.virtual-void.org',
+    soa_email    => 'steffen.virtual-void.org',
+    nameservers  => [ 'solipsistic.virtual-void.org', 'benevolent.virtual-void.org', ],
   }
 
   # A Records
@@ -19,13 +17,13 @@ class trollop::dns::virtual_void_org {
     '@_virtual-void':
       host => '@',
       zone => 'virtual-void.org',
-      data => '96.53.91.26';
+      data => '50.112.151.217';
     'ns1_virtual-void':
-      host => 'ns1',
+      host => 'solipsistic',
       zone => 'virtual-void.org',
       data => '96.53.91.26';
     'ns2_virtual-void':
-      host => 'ns2',
+      host => 'benevolent',
       zone => 'virtual-void.org',
       data => '96.53.91.26';
     'www_virtual-void':
@@ -36,6 +34,18 @@ class trollop::dns::virtual_void_org {
       host => 'mail',
       zone => 'virtual-void.org',
       data => '96.53.91.26';
+  }
+
+  dns::record::txt { 'spf_virtual-void':
+    host => '@',
+    zone => 'virtual-void.org',
+    data => 'v=spf1 mx a a:trollop.org a:fate.ca a:nein.ca include:shaw.ca include:google.com ~all';
+  }
+
+  dns::record::cname { 'verify':
+    host => '4Q37O3LET6SY',
+    zone => 'virtual-void.org',
+    data => 'gv-67UVJFO2AYH5MF.dv.googlehosted.com';
   }
 
   # MX Records

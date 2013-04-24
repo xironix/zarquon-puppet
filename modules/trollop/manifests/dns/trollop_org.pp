@@ -1,15 +1,15 @@
 class trollop::dns::trollop_org {
   # Forward Zone
   dns::zone { 'trollop.org':
-    serial       => '2012102403',
+    serial       => '2013041601',
     zone_ttl     => '600',
     zone_refresh => '10800',
     zone_retry   => '3600',
     zone_expire  => '604800',
     zone_minimum => '3600',
-    soa          => 'ns1.trollop.org',
-    soa_email    => 'ironix.trollop.org',
-    nameservers  => [ 'ns1.trollop.org', 'ns2.trollop.org', ],
+    soa          => 'esurient.trollop.org',
+    soa_email    => 'steffen.trollop.org',
+    nameservers  => [ 'esurient.trollop.org', 'hedonistic.trollop.org', ],
   }
 
   # A Records
@@ -19,11 +19,11 @@ class trollop::dns::trollop_org {
       zone => 'trollop.org',
       data => '96.53.91.26';
     'ns1_trollop':
-      host => 'ns1',
+      host => 'esurient',
       zone => 'trollop.org',
       data => '96.53.91.26';
     'ns2_trollop':
-      host => 'ns2',
+      host => 'hedonistic',
       zone => 'trollop.org',
       data => '96.53.91.26';
     'www_trollop':
@@ -46,18 +46,20 @@ class trollop::dns::trollop_org {
       host => 'torrents',
       zone => 'trollop.org',
       data => '96.53.91.26';
-    'mumble_trollop':
-      host => 'mumble',
-      zone => 'trollop.org',
-      data => '54.225.135.56';
    }
+
+ dns::record::txt { 'spf_trollop':
+    host => '@',
+    zone => 'trollop.org',
+    data => 'v=spf1 mx a a:trollop.org a:fate.ca a:virtual-void.org include:shaw.ca include:google.com ~all';
+  }
 
   # MX Records
   dns::record::mx {
     'mx,0_trollop':
+      preference => 0,
       host       => 'mx,0',
       zone       => 'trollop.org',
-      preference => 0,
       data       => 'mail.trollop.org';
   }
 }
