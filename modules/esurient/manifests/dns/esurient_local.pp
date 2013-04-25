@@ -20,13 +20,19 @@ class esurient::dns::esurient_local {
   }
 
   dns::record::a {
+    '@':
+      zone => 'esurient.local',
+      data => '192.168.1.1';
+    'ns':
+      zone => 'esurient.local',
+      data => '192.168.1.1';
+    'torrents':
+      zone => 'esurient.local',
+      data => '192.168.1.1';
     'zarquon':
       zone => 'esurient.local',
       data => '192.168.1.1',
       ptr  => true;
-    'ns':
-      zone => 'esurient.local',
-      data => '192.168.1.1';
     'share-and-enjoy':
       zone => 'esurient.local',
       data => '192.168.1.2',
@@ -59,12 +65,6 @@ class esurient::dns::esurient_local {
       zone => 'esurient.local',
       data => '192.168.1.111',
       ptr  => true;
-  }
-
-  dns::record::cname {
-    'torrents':
-      zone => 'esurient.local',
-      data => 'torrents.esurient.local';
   }
 }
 

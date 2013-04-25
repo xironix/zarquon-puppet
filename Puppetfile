@@ -12,17 +12,8 @@ mod "sudo",
 mod "ntp",
   :git => "git://github.com/puppetlabs/puppetlabs-ntp.git"
 
-mod "wget",
-  :git => "git://github.com/maestrodev/puppet-wget.git"
-
-mod "vim",
-  :git => "git://github.com/saz/puppet-vim.git"
-
 mod "concat",
   :git => "git://github.com/ripienaar/puppet-concat.git"
-
-mod "nginx",
-  :git => "git://github.com/jfryman/puppet-nginx.git"
 
 mod "firewall",
   :git => "git://github.com/puppetlabs/puppetlabs-firewall.git"
