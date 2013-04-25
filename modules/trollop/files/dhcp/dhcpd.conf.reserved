@@ -2,7 +2,7 @@
 
 # Reserved IP Group
 group {
-  option domain-name "trollop.org";
+  option domain-name "esurient.local";
 
   # Devices
   host share-and-enjoy {
@@ -48,17 +48,5 @@ group {
     option host-name "lintilla-cat";
     hardware ethernet e4:ce:8f:63:35:26;
     fixed-address 192.168.1.111;
-  }
-
-  # Virtual Machines
-  host krikkiter {
-    option host-name "krikkiter";
-    hardware ethernet 00:0c:29:d5:19:b6;
-    fixed-address 192.168.1.120;
-  }
-  host majikthise {
-    option host-name "majikthise";
-    hardware ethernet 00:aa:bb:cc:dd:00;
-    fixed-address 192.168.1.121;
   }
 }

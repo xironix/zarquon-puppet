@@ -1,8 +1,5 @@
 forge "http://forge.puppetlabs.com"
 
-#mod "puppetlabs/stdlib"
-#mod "puppetlabs/apt"
-
 mod "stdlib",
   :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
 
@@ -25,13 +22,13 @@ mod "concat",
   :git => "git://github.com/ripienaar/puppet-concat.git"
 
 mod "nginx",
-  :git => "git://github.com/xironix/puppet-nginx.git"
+  :git => "git://github.com/jfryman/puppet-nginx.git"
 
 mod "firewall",
   :git => "git://github.com/puppetlabs/puppetlabs-firewall.git"
 
 mod "dns",
-  :git => "git://github.com/xironix/puppet-dns.git"
+  :git => "git://github.com/ajjahn/puppet-dns.git"
 
 mod "network",
   :git => "git://github.com/bvox/puppet-module-network.git"
