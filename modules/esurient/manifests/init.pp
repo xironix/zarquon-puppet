@@ -1,2 +1,2 @@
-class trollop {
+class esurient {
 }

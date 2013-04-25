@@ -1,6 +1,6 @@
-define trollop::user (
-  $fullname     = 'Another Nameless Trollop',
-  $email        = 'nameless.user@trollop.org',
+define esurient::user (
+  $fullname     = 'Esurient User',
+  $email        = 'nameless.user@esurient.local',
   $ensure       = present,
   $shell        = '/bin/bash',
   $has_sudo     = true,
@@ -78,28 +78,28 @@ define trollop::user (
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/trollop/bash/.profile',
+      source  => 'puppet:///modules/esurient/bash/.profile',
       require => User[$title];
     "${home_dir}/${title}/.bashrc":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/trollop/bash/.bashrc',
+      source  => 'puppet:///modules/esurient/bash/.bashrc',
       require => User[$title];
     "${home_dir}/${title}/.bash_aliases":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/trollop/bash/.bash_aliases',
+      source  => 'puppet:///modules/esurient/bash/.bash_aliases',
       require => User[$title];
     "${home_dir}/${title}/.bash_logout":
       ensure  => $ensure,
       owner   => $title,
       group   => $title,
       mode    => '0640',
-      source  => 'puppet:///modules/trollop/bash/.bash_logout',
+      source  => 'puppet:///modules/esurient/bash/.bash_logout',
       require => User[$title];
   }
 

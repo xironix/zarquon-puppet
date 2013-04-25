@@ -1,12 +1,12 @@
-class trollop::base {
+class esurient::base {
   include apt
   include git
   include wget
   include ntp
-  include trollop::firewall
+  include esurient::firewall
 
   class { 'vim': autoupgrade  => true }
-  class { 'sudo': autoupgrade => true, source => 'puppet:///modules/trollop/sudo/sudoers.deb'}
+  class { 'sudo': autoupgrade => true, source => 'puppet:///modules/esurient/sudo/sudoers.deb'}
 
   Exec { path => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin' }
 

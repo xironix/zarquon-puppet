@@ -1,5 +1,5 @@
-class trollop::dhcp {
-  include trollop::dhcp::install
-  include trollop::dhcp::config
-  include trollop::dhcp::service
+class esurient::dhcp {
+  include esurient::dhcp::install
+  include esurient::dhcp::config
+  include esurient::dhcp::service
 }

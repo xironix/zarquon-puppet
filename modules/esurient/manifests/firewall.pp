@@ -1,6 +1,6 @@
-class trollop::firewall {
-  include trollop::firewall::pre
-  include trollop::firewall::post
+class esurient::firewall {
+  include esurient::firewall::pre
+  include esurient::firewall::post
 
   # Always persist firewall rules
   exec { 'persist-firewall':
@@ -14,8 +14,8 @@ class trollop::firewall {
   # first puppet run.
   Firewall {
     notify  => Exec['persist-firewall'],
-    before  => Class['trollop::firewall::post'],
-    require => Class['trollop::firewall::pre'],
+    before  => Class['esurient::firewall::post'],
+    require => Class['esurient::firewall::pre'],
   }
   Firewallchain {
     notify  => Exec['persist-firewall'],

@@ -1,4 +1,4 @@
-class trollop::firewall::post {
+class esurient::firewall::post {
   firewall { '999 drop all':
     proto   => 'all',
     action  => 'drop',

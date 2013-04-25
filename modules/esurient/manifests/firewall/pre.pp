@@ -1,4 +1,4 @@
-class trollop::firewall::pre {
+class esurient::firewall::pre {
   Firewall {
     require => undef,
   }

@@ -13,12 +13,12 @@ env.loom_puppet_autosign = True
 
 env.user = 'root'
 env.port = 7442
-env.puppetmaster_host = 'zarquon.trollop.org'
+env.puppetmaster_host = '192.168.1.1'
 env.environment = environ.get('ENVIRONMENT', 'production')
 
 if env.environment == 'production':
     env.roledefs = {
-        'zarquon': ['trollop.org'],
+        'zarquon': ['192.168.1.1'],
     }
 
 @task
