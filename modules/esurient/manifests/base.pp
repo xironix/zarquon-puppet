@@ -1,9 +1,7 @@
 class esurient::base {
   include apt
   include git
-  include wget
   include ntp
-  include esurient::firewall
 
   class { 'vim': autoupgrade  => true }
   class { 'sudo': autoupgrade => true, source => 'puppet:///modules/esurient/sudo/sudoers.deb'}

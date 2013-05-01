@@ -78,34 +78,4 @@ class roles::zarquon {
     },
     auto       => [ 'eth0', 'eth1', ],
   }
-
-  # Firewall rules
-  firewall { '200 snat for internal network':
-    chain    => 'POSTROUTING',
-    jump     => 'MASQUERADE',
-    proto    => 'all',
-    outiface => 'eth0',
-    source   => '192.168.1.0/24',
-    table    => 'nat',
-  }
-  firewall { '201 allow all on private net':
-    proto   => 'all',
-    iniface => 'eth1',
-    action  => 'accept',
-  }
- firewall { '202 allow 7442 (alt ssh port)':
-    action => accept,
-    proto  => 'tcp',
-    dport  => '7442',
-  }
-  firewall { '290 allow tcp bitTorrent traffic':
-    action => accept,
-    proto  => 'tcp',
-    dport  => '49152-65535',
-  }
-  firewall { '291 allow udp bitTorrent traffic':
-    action => accept,
-    proto  => 'udp',
-    dport  => '49152-65535',
-  }
 }
