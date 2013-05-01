@@ -29,6 +29,9 @@ class esurient::dns::esurient_local {
     'torrents':
       zone => 'esurient.local',
       data => '192.168.1.1';
+    'blog':
+      zone => 'esurient.local',
+      data => '192.168.1.1';
     'zarquon':
       zone => 'esurient.local',
       data => '192.168.1.1',
