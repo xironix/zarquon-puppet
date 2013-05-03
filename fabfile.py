@@ -1,5 +1,4 @@
 from fabric.api import *
-from fabric.contrib.files import exists
 from loom import puppet
 from loom.tasks import *
 from os import chdir, path, environ
@@ -13,17 +12,17 @@ env.loom_puppet_autosign = True
 
 env.user = 'root'
 env.port = 7442
-env.puppetmaster_host = '192.168.1.1'
+env.puppetmaster_host = 'zarquon.esurient.local'
 env.environment = environ.get('ENVIRONMENT', 'production')
 
 if env.environment == 'production':
     env.roledefs = {
-        'zarquon': ['192.168.1.1'],
+        'zarquon': ['zarquon'],
     }
+
 
 @task
 def deploy_puppet():
     execute(puppet.update, role='puppetmaster')
     all()
     execute(puppet.force)
-
