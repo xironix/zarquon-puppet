@@ -1,3 +1,6 @@
+# Deprecated
+I am no longer using puppet to manage my server.
+
 # Zarquon Puppet Manifests
 Personal puppet manifests for managing my home server.
 
